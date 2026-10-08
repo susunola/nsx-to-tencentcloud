@@ -112,3 +112,7 @@ manifest 模板见 examples/aws-manifest.json。它默认完整性确认值为 f
 - JSON 原子替换；失败重跑会将旧 JSON 输出改成阻断标记。以 plan.json 和退出码为准，输入失败时旧 CSV 可能仍存在。
 
 验证：39 项测试和 8 个离线连接检查通过。尚未验证真实云执行，也不是通用等价证明。剩余工作见 [REVIEW.md](REVIEW.md)。
+
+## 复杂公开样例试跑
+
+新增 8 份公开生成配置，覆盖分类跳转、标签 AND/OR、排除匹配、方向和作用范围。2 份完成转换并通过 484 个抽样新连接比较；6 份明确阻断。见 [试跑说明](complex-samples/README.md)，运行 `python3 complex-samples/run.py` 可复现。均为离线生成样例，不是生产导出或通用等价证明。

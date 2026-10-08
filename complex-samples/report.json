@@ -1,0 +1,171 @@
+{
+  "limitations": "Synthetic single-IP mappings and explicit defaults. Mapped VM pairs only; TCP/UDP new connections with sampled port boundaries. Not general equivalence, tag-expression evaluation, or live cloud validation.",
+  "fixtures": [
+    {
+      "fixture": "Example1aRedundantRuleInOut.json",
+      "vms": 2,
+      "groups": 2,
+      "rules": 4,
+      "status": "review_required",
+      "issues": [],
+      "connection_cases": 44,
+      "mismatches": [],
+      "generated_rules": 10
+    },
+    {
+      "fixture": "Example2.json",
+      "vms": 11,
+      "groups": 13,
+      "rules": 16,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Slytherin-to-Slytherin-allow/rules/10220",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Gryffindor-to-Dumbledore-allow/rules/10216",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleAppWithGroups.json",
+      "vms": 5,
+      "groups": 6,
+      "rules": 8,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "foo-app/rules/1027",
+          "severity": "error",
+          "reason": "Negated groups unsupported"
+        },
+        {
+          "rule": "New Policy/rules/1022",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        },
+        {
+          "rule": "New Policy/rules/1009",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleExprAndCondsExclude.json",
+      "vms": 9,
+      "groups": 6,
+      "rules": 5,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Protect-DBs/rules/9201",
+          "severity": "error",
+          "reason": "Negated groups unsupported"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleExprOrCondsExclude.json",
+      "vms": 9,
+      "groups": 6,
+      "rules": 5,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Protect-DBs/rules/9201",
+          "severity": "error",
+          "reason": "Negated groups unsupported"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleExprSingleScope.json",
+      "vms": 3,
+      "groups": 4,
+      "rules": 9,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "From-Dumbledore-connection/rules/9198",
+          "severity": "error",
+          "reason": "Group requires complete resolved IP membership: Slytherin"
+        },
+        {
+          "rule": "Hufflepuff-connection/rules/9202",
+          "severity": "error",
+          "reason": "Group requires complete resolved IP membership: Slytherin"
+        },
+        {
+          "rule": "Slytherin-connection/rules/9204",
+          "severity": "error",
+          "reason": "Group requires complete resolved IP membership: Slytherin"
+        },
+        {
+          "rule": "Slytherin-connection/rules/9205",
+          "severity": "error",
+          "reason": "Group requires complete resolved IP membership: Slytherin"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleGroup4.json",
+      "vms": 5,
+      "groups": 3,
+      "rules": 2,
+      "status": "review_required",
+      "issues": [],
+      "connection_cases": 440,
+      "mismatches": [],
+      "generated_rules": 14
+    },
+    {
+      "fixture": "ExampleHogwarts.json",
+      "vms": 11,
+      "groups": 7,
+      "rules": 9,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Slytherin-to-Slytherin-allow/rules/10220",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Dumbledore-connection/rules/10221",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        }
+      ]
+    }
+  ]
+}

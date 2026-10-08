@@ -142,3 +142,7 @@ The AWS Labs project was used only as a reference for the export file contract. 
 - JSON outputs are replaced atomically. Failed reruns replace previous JSON outputs with a blocked marker. `plan.json` and the process exit code are authoritative; an older CSV may remain after input failure.
 
 Validation: 39 tests and 8 offline demo connection checks passed. This does not validate real cloud enforcement or establish general policy equivalence. See [REVIEW.md](REVIEW.md) for remaining work.
+
+## Complex public fixture trial
+
+Eight additional public generated configurations cover policy-category jumps, tag AND/OR expressions, negation, direction, and scope. Two compile and match 484 sampled new-connection decisions; six are blocked. See [trial details](complex-samples/README.md) and run `python3 complex-samples/run.py`. These are synthetic offline tests, not production exports or a general equivalence proof.

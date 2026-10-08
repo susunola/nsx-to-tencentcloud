@@ -1,0 +1,33 @@
+# Complex public fixture trial / 复杂公开样例试跑
+
+Run from repository root: `python3 complex-samples/run.py`.
+
+Sources and pinned revision: [SOURCE.md](SOURCE.md). All eight inputs are public generated test configurations from np-guard/vmware-analyzer, not verified customer production exports. Original files are retained unmodified under their Apache-2.0 license.
+
+| Fixture | VMs | Source rules | Result | Connection checks |
+|---|---:|---:|---|---:|
+| Example1aRedundantRuleInOut | 2 | 4 | Review required; 10 generated rules | 44; no differences |
+| ExampleGroup4 | 5 | 2 | Review required; 14 generated rules | 440; no differences |
+| Example2 | 11 | 16 | Blocked: JUMP_TO_APPLICATION | — |
+| ExampleHogwarts | 11 | 9 | Blocked: JUMP_TO_APPLICATION | — |
+| ExampleAppWithGroups | 5 | 8 | Blocked: negation and unsupported services | — |
+| ExampleExprAndCondsExclude | 9 | 5 | Blocked: negation | — |
+| ExampleExprOrCondsExclude | 9 | 5 | Blocked: negation | — |
+| ExampleExprSingleScope | 3 | 9 | Blocked: unresolved group membership | — |
+
+Machine-readable diagnostics: [report.json](report.json).
+
+## What was checked
+
+For successfully compiled inputs, a separate first-match evaluator compares source NSX endpoint decisions with generated target ingress/egress decisions. It checks every ordered pair of distinct mapped VMs, TCP/UDP, selected ports, and port-range boundaries and adjacent values. Source and target both assume default denial when no rule matches.
+
+Mapped IPs are synthetic documentation addresses; stateful, direction and IPv4 defaults are explicit trial assumptions. Resolved VM membership comes from the fixture and mapping. Tag and nested expressions are not executed. The cases cover new connections, not return traffic, real cloud binding, external endpoints, self-connections, multiple NICs, IPv6 or routing. Sampled agreement is not a complete equivalence proof.
+
+Unsupported input must block the entire Security Group request list. Regression tests check that the known unsupported samples remain blocked; the runner asserts that no requests are returned for blocked plans.
+
+## 中文结论
+
+8 份复杂公开生成样例，55 台 VM（按样例分别计数）、58 条源规则。
+2 份转换成功并完成 484 个离线新连接比较，没有发现差异；6 份因明确不支持的语义或缺少完整成员而阻断。
+
+接下来应优先实现分类跳转的控制流分析、带有明确资产全集的排除集合计算，以及更完整的组成员采集。不能将 JUMP_TO_APPLICATION 直接当成 ALLOW，也不能用 ANY 替代未解析对象。

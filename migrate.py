@@ -185,9 +185,14 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--snapshot', required=True); p.add_argument('--mapping', required=True)
     p.add_argument('--out', required=True); p.add_argument('--rule-budget', type=int, default=200)
+    p.add_argument('--bounded', action='store_true', help='Explicit mapped IPv4 TCP/UDP domain; outside traffic denied')
     a = p.parse_args()
     try:
-        result = compile_snapshot(read_json(a.snapshot), read_json(a.mapping), a.rule_budget)
+        compiler = compile_snapshot
+        if a.bounded:
+            from bounded import compile_bounded
+            compiler = compile_bounded
+        result = compiler(read_json(a.snapshot), read_json(a.mapping), a.rule_budget)
         out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
         write_json(out / 'plan.json', result)
         with (out / 'issues.csv').open('w', newline='') as f:

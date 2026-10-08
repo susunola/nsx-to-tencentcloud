@@ -1,0 +1,239 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "review_required",
+  "issues": [],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-x/rules/1004",
+      "order": 0,
+      "source": [
+        "198.51.100.1/32"
+      ],
+      "destination": [
+        "198.51.100.2/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "app-x/rules/1006",
+      "order": 1,
+      "source": [
+        "198.51.100.1/32"
+      ],
+      "destination": [
+        "198.51.100.2/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "app-x/rules/1005",
+      "order": 2,
+      "source": [
+        "198.51.100.1/32"
+      ],
+      "destination": [
+        "198.51.100.2/32"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "app-x/rules/1003",
+      "order": 3,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.1/32",
+      "198.51.100.2/32"
+    ],
+    "services": [
+      "ALL",
+      "TCP:445"
+    ]
+  },
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-trial-1",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.2/32",
+            "Port": "445",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1006",
+            "CidrBlock": "198.51.100.2/32",
+            "Port": "445",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1005",
+            "CidrBlock": "198.51.100.2/32",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 3
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-2",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.1/32",
+            "Port": "445",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1006",
+            "CidrBlock": "198.51.100.1/32",
+            "Port": "445",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1005",
+            "CidrBlock": "198.51.100.1/32",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 3
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    }
+  ],
+  "group_inventory": [
+    {
+      "display_name": "frontend",
+      "path": "frontend",
+      "vm_members": [
+        {
+          "display_name": "A",
+          "id": "A"
+        }
+      ],
+      "members": [
+        "192.0.2.1"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "backend",
+      "path": "backend",
+      "vm_members": [
+        {
+          "display_name": "B",
+          "id": "B"
+        }
+      ],
+      "members": [
+        "192.0.2.2"
+      ],
+      "members_complete": true
+    }
+  ]
+}

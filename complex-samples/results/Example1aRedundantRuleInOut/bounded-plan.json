@@ -1,0 +1,180 @@
+{
+  "status": "bounded_review_required",
+  "issues": [],
+  "coverage": {
+    "domain": "distinct mapped single-IPv4 VM pairs; TCP/UDP destination ports 1..65535",
+    "default_assumption": "unmatched source traffic denied at each endpoint",
+    "outside_domain": "denied in target; this is intentional isolation, NOT full NSX equivalence",
+    "port_partitions_evaluated": 8
+  },
+  "connections": [
+    {
+      "source": "A",
+      "destination": "B",
+      "protocol": "TCP",
+      "port": "1-444",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1005"
+        ],
+        [
+          "app-x/rules/1005"
+        ]
+      ]
+    },
+    {
+      "source": "A",
+      "destination": "B",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1004"
+        ],
+        [
+          "app-x/rules/1004"
+        ]
+      ]
+    },
+    {
+      "source": "A",
+      "destination": "B",
+      "protocol": "TCP",
+      "port": "446-65535",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1005"
+        ],
+        [
+          "app-x/rules/1005"
+        ]
+      ]
+    },
+    {
+      "source": "A",
+      "destination": "B",
+      "protocol": "UDP",
+      "port": "1-65535",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1005"
+        ],
+        [
+          "app-x/rules/1005"
+        ]
+      ]
+    }
+  ],
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-trial-1",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "1-444",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "446-65535",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "UDP",
+            "Port": "1-65535",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 4
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-2",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "1-444",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "446-65535",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "UDP",
+            "Port": "1-65535",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded A -> B",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 4
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    }
+  ]
+}

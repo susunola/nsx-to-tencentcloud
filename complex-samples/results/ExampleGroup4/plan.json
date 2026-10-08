@@ -1,0 +1,312 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "review_required",
+  "issues": [],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-x/rules/1004",
+      "order": 0,
+      "source": [
+        "198.51.100.4/32",
+        "198.51.100.2/32"
+      ],
+      "destination": [
+        "198.51.100.5/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "app-x/rules/1003",
+      "order": 1,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.2/32",
+      "198.51.100.4/32",
+      "198.51.100.5/32"
+    ],
+    "services": [
+      "ALL",
+      "TCP:445"
+    ]
+  },
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-trial-1",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-2",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.5/32",
+            "Port": "445",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-3",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-4",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.5/32",
+            "Port": "445",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-5",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.4/32",
+            "Port": "445",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-x/rules/1004",
+            "CidrBlock": "198.51.100.2/32",
+            "Port": "445",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 2
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "Action": "DROP",
+            "PolicyDescription": "NSX app-x/rules/1003",
+            "CidrBlock": "0.0.0.0/0",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    }
+  ],
+  "group_inventory": [
+    {
+      "display_name": "research-test-expr-2",
+      "path": "research-test-expr-2",
+      "vm_members": [
+        {
+          "display_name": "New Virtual Machine",
+          "id": "New Virtual Machine"
+        }
+      ],
+      "members": [
+        "192.0.2.5"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "nested-expr-group",
+      "path": "nested-expr-group",
+      "vm_members": [
+        {
+          "display_name": "New-VM-4",
+          "id": "New-VM-4"
+        },
+        {
+          "display_name": "New-VM-2",
+          "id": "New-VM-2"
+        }
+      ],
+      "expression": [
+        {
+          "resource_type": "NestedExpression",
+          "expressions": [
+            {
+              "key": "Tag",
+              "member_type": "VirtualMachine",
+              "operator": "EQUALS",
+              "resource_type": "Condition",
+              "value": "foo"
+            },
+            {
+              "conjunction_operator": "AND",
+              "resource_type": "ConjunctionOperator"
+            },
+            {
+              "key": "Tag",
+              "member_type": "VirtualMachine",
+              "operator": "EQUALS",
+              "resource_type": "Condition",
+              "value": "bar"
+            }
+          ]
+        },
+        {
+          "conjunction_operator": "OR",
+          "resource_type": "ConjunctionOperator"
+        },
+        {
+          "key": "Tag",
+          "member_type": "VirtualMachine",
+          "operator": "EQUALS",
+          "resource_type": "Condition",
+          "value": "backend"
+        }
+      ],
+      "members": [
+        "192.0.2.4",
+        "192.0.2.2"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "no-group-vms-group",
+      "path": "no-group-vms-group",
+      "vm_members": [
+        {
+          "display_name": "New-VM-1",
+          "id": "New-VM-1"
+        },
+        {
+          "display_name": "New-VM-3",
+          "id": "New-VM-3"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    }
+  ]
+}

@@ -28494,6 +28494,7 @@
       "service_entries": [],
       "path": "app-x/rules/1004",
       "effective_order": 0,
+      "category": "Application",
       "stateful": true,
       "ip_protocol": "IPV4"
     },
@@ -28518,6 +28519,7 @@
       "service_entries": [],
       "path": "app-x/rules/1003",
       "effective_order": 1,
+      "category": "Application",
       "stateful": true,
       "ip_protocol": "IPV4"
     }

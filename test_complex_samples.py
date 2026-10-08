@@ -15,6 +15,13 @@ class ComplexFixtureTests(unittest.TestCase):
                 self.assertEqual(r['status'],'review_required')
                 self.assertGreater(r['connection_cases'],0)
                 self.assertEqual(r['mismatches'],[])
+    def test_bounded_advanced_samples(self):
+        for name in ['Example2.json','ExampleHogwarts.json','ExampleExprAndCondsExclude.json','ExampleExprOrCondsExclude.json']:
+            with self.subTest(fixture=name):
+                r=self.reports[name]
+                self.assertEqual(r['bounded_status'],'bounded_review_required')
+                self.assertGreater(r['bounded_connection_cases'],0)
+                self.assertEqual(r['bounded_mismatches'],[])
     def test_jump_is_blocked(self):
         for name in ['Example2.json','ExampleHogwarts.json']:
             with self.subTest(fixture=name):

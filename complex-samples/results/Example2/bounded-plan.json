@@ -1,0 +1,2483 @@
+{
+  "status": "bounded_review_required",
+  "issues": [],
+  "coverage": {
+    "domain": "distinct mapped single-IPv4 VM pairs; TCP/UDP destination ports 1..65535",
+    "default_assumption": "unmatched source traffic denied at each endpoint",
+    "outside_domain": "denied in target; this is intentional isolation, NOT full NSX equivalence",
+    "port_partitions_evaluated": 1540
+  },
+  "connections": [
+    {
+      "source": "Slytherin-Web",
+      "destination": "Slytherin-App",
+      "protocol": "TCP",
+      "port": "8443",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Slytherin-App",
+      "protocol": "TCP",
+      "port": "9443",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Slytherin-App",
+      "protocol": "TCP",
+      "port": "10443",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3049"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-Web",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Slytherin-DB",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3050"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3050"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-to-Slytherin-allow/rules/10220",
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Slytherin-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Hufflepuff-App",
+      "protocol": "TCP",
+      "port": "8443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Hufflepuff-App",
+      "protocol": "TCP",
+      "port": "9443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Hufflepuff-App",
+      "protocol": "TCP",
+      "port": "10443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2049"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-Web",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Hufflepuff-DB",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2050"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2050"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Hufflepuff-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Gryffindor-App",
+      "protocol": "TCP",
+      "port": "8443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Gryffindor-App",
+      "protocol": "TCP",
+      "port": "9443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-Web",
+      "destination": "Gryffindor-App",
+      "protocol": "TCP",
+      "port": "10443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9196"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-App",
+      "destination": "Gryffindor-DB",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9197"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9197"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Gryffindor-DB",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore1",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Slytherin-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ],
+        [
+          "Slytherin-Intra-App-Policy/rules/3048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Hufflepuff-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ],
+        [
+          "Hufflepuff-Intra-App-Policy/rules/2048"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "80",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    },
+    {
+      "source": "Dumbledore2",
+      "destination": "Gryffindor-Web",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ],
+        [
+          "Gryffindor-to-Dumbledore-allow/rules/10217",
+          "Gryffindor-Intra-App-Policy/rules/9195"
+        ]
+      ]
+    }
+  ],
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-trial-1",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Slytherin-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Slytherin-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Slytherin-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Slytherin-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Slytherin-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Slytherin-Web",
+            "PolicyIndex": 7
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Slytherin-Web",
+            "PolicyIndex": 8
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Slytherin-Web",
+            "PolicyIndex": 9
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Slytherin-Web",
+            "PolicyIndex": 10
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Slytherin-Web",
+            "PolicyIndex": 11
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Slytherin-Web",
+            "PolicyIndex": 12
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Slytherin-Web",
+            "PolicyIndex": 13
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Slytherin-Web",
+            "PolicyIndex": 14
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Slytherin-Web",
+            "PolicyIndex": 15
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Slytherin-Web",
+            "PolicyIndex": 16
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Slytherin-Web",
+            "PolicyIndex": 17
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Slytherin-Web",
+            "PolicyIndex": 18
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Slytherin-Web",
+            "PolicyIndex": 19
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 20
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Hufflepuff-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Gryffindor-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-2",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Slytherin-App",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 3
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-DB",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Hufflepuff-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Gryffindor-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-3",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Slytherin-DB",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 1
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 6
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-4",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Hufflepuff-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Hufflepuff-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Hufflepuff-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Hufflepuff-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-Web",
+            "PolicyIndex": 7
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Hufflepuff-Web",
+            "PolicyIndex": 8
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Hufflepuff-Web",
+            "PolicyIndex": 9
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Hufflepuff-Web",
+            "PolicyIndex": 10
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Hufflepuff-Web",
+            "PolicyIndex": 11
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Hufflepuff-Web",
+            "PolicyIndex": 12
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Hufflepuff-Web",
+            "PolicyIndex": 13
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Hufflepuff-Web",
+            "PolicyIndex": 14
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Hufflepuff-Web",
+            "PolicyIndex": 15
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Hufflepuff-Web",
+            "PolicyIndex": 16
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Hufflepuff-Web",
+            "PolicyIndex": 17
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Hufflepuff-Web",
+            "PolicyIndex": 18
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Hufflepuff-Web",
+            "PolicyIndex": 19
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 20
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Gryffindor-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-5",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Hufflepuff-App",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 3
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-DB",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Gryffindor-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-6",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Hufflepuff-DB",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 1
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 6
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-7",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Gryffindor-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-Web -> Gryffindor-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Gryffindor-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-App -> Gryffindor-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.3/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Slytherin-DB -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Gryffindor-Web",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-Web -> Gryffindor-Web",
+            "PolicyIndex": 7
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Gryffindor-Web",
+            "PolicyIndex": 8
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-App -> Gryffindor-Web",
+            "PolicyIndex": 9
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Gryffindor-Web",
+            "PolicyIndex": 10
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.6/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Hufflepuff-DB -> Gryffindor-Web",
+            "PolicyIndex": 11
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-Web",
+            "PolicyIndex": 12
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-Web",
+            "PolicyIndex": 13
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Gryffindor-Web",
+            "PolicyIndex": 14
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Gryffindor-Web",
+            "PolicyIndex": 15
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Gryffindor-Web",
+            "PolicyIndex": 16
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.10/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Gryffindor-Web",
+            "PolicyIndex": 17
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Gryffindor-Web",
+            "PolicyIndex": 18
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.11/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Gryffindor-Web",
+            "PolicyIndex": 19
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 20
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-8",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "8443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "9443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "10443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-Web -> Gryffindor-App",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 3
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.9/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-DB",
+            "PolicyIndex": 6
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 7
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-9",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.8/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-App -> Gryffindor-DB",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 1
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Gryffindor-DB -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 6
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-10",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore1 -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 6
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-11",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Slytherin-Web",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.1/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Slytherin-Web",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Hufflepuff-Web",
+            "PolicyIndex": 2
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Hufflepuff-Web",
+            "PolicyIndex": 3
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "80",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Gryffindor-Web",
+            "PolicyIndex": 4
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "CidrBlock": "198.51.100.7/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded Dumbledore2 -> Gryffindor-Web",
+            "PolicyIndex": 5
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 6
+          }
+        ]
+      }
+    }
+  ]
+}

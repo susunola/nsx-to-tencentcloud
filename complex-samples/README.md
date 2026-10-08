@@ -31,3 +31,11 @@ Unsupported input must block the entire Security Group request list. Regression 
 2 份转换成功并完成 484 个离线新连接比较，没有发现差异；6 份因明确不支持的语义或缺少完整成员而阻断。
 
 接下来应优先实现分类跳转的控制流分析、带有明确资产全集的排除集合计算，以及更完整的组成员采集。不能将 JUMP_TO_APPLICATION 直接当成 ALLOW，也不能用 ANY 替代未解析对象。
+
+## v0.4 bounded-mode results
+
+Ordinary mode retains its existing unsupported-rule blocks. In the explicitly selected bounded mode, Example2, ExampleHogwarts, both exclusion-expression examples, ExampleGroup4 and the redundant-rule example compile. ExampleAppWithGroups remains blocked by unsupported services; ExampleExprSingleScope remains blocked by incomplete membership.
+
+11,104 sampled mapped-pair connection comparisons show no differences in the IPv4 TCP/UDP port 1–65535 domain. Status is bounded_review_required. The default deny deliberately restricts traffic outside that domain. This does not prove full NSX equivalence. Generated bounded plans are under results/<fixture>/bounded-plan.json.
+
+Jump semantics reference: https://developer.broadcom.com/xapis/inventory/latest/data-structures/InlineNsxRule1/

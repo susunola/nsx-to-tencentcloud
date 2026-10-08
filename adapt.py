@@ -90,6 +90,7 @@ def normalize(policies, groups, services, mapping, manifest, tags=None):
                 raise ValueError('Explicit empty scope must not inherit policy scope')
             r['path'] = r.get('path') or f"{pid}/rules/{r.get('id',r.get('rule_id',r.get('display_name')))}"
             r['effective_order'] = len(normalized_rules)
+            r['category'] = category
             r['scope'] = r.get('scope') or policy.get('scope')
             for field in ('stateful', 'direction', 'ip_protocol'):
                 if field not in r:

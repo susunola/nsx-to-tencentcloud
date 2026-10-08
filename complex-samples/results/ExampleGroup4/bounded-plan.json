@@ -1,0 +1,189 @@
+{
+  "status": "bounded_review_required",
+  "issues": [],
+  "coverage": {
+    "domain": "distinct mapped single-IPv4 VM pairs; TCP/UDP destination ports 1..65535",
+    "default_assumption": "unmatched source traffic denied at each endpoint",
+    "outside_domain": "denied in target; this is intentional isolation, NOT full NSX equivalence",
+    "port_partitions_evaluated": 80
+  },
+  "connections": [
+    {
+      "source": "New-VM-2",
+      "destination": "New Virtual Machine",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1004"
+        ],
+        [
+          "app-x/rules/1004"
+        ]
+      ]
+    },
+    {
+      "source": "New-VM-4",
+      "destination": "New Virtual Machine",
+      "protocol": "TCP",
+      "port": "445",
+      "source_rule_trace": [
+        [
+          "app-x/rules/1004"
+        ],
+        [
+          "app-x/rules/1004"
+        ]
+      ]
+    }
+  ],
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-trial-1",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-2",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded New-VM-2 -> New Virtual Machine",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-3",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-4",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.5/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded New-VM-4 -> New Virtual Machine",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-trial-5",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.2/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded New-VM-2 -> New Virtual Machine",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "445",
+            "CidrBlock": "198.51.100.4/32",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded New-VM-4 -> New Virtual Machine",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 2
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "CidrBlock": "0.0.0.0/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    }
+  ]
+}

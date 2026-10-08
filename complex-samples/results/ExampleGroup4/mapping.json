@@ -1,0 +1,54 @@
+{
+  "assets": [
+    {
+      "id": "New-VM-1",
+      "old_ips": [
+        "192.0.2.1"
+      ],
+      "new_ips": [
+        "198.51.100.1"
+      ],
+      "security_group_id": "sg-trial-1"
+    },
+    {
+      "id": "New-VM-2",
+      "old_ips": [
+        "192.0.2.2"
+      ],
+      "new_ips": [
+        "198.51.100.2"
+      ],
+      "security_group_id": "sg-trial-2"
+    },
+    {
+      "id": "New-VM-3",
+      "old_ips": [
+        "192.0.2.3"
+      ],
+      "new_ips": [
+        "198.51.100.3"
+      ],
+      "security_group_id": "sg-trial-3"
+    },
+    {
+      "id": "New-VM-4",
+      "old_ips": [
+        "192.0.2.4"
+      ],
+      "new_ips": [
+        "198.51.100.4"
+      ],
+      "security_group_id": "sg-trial-4"
+    },
+    {
+      "id": "New Virtual Machine",
+      "old_ips": [
+        "192.0.2.5"
+      ],
+      "new_ips": [
+        "198.51.100.5"
+      ],
+      "security_group_id": "sg-trial-5"
+    }
+  ]
+}

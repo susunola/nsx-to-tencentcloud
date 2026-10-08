@@ -8,6 +8,12 @@
       "rules": 4,
       "status": "review_required",
       "issues": [],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 8,
+      "bounded_connections": 4,
+      "bounded_connection_cases": 40,
+      "bounded_mismatches": [],
       "connection_cases": 44,
       "mismatches": [],
       "generated_rules": 10
@@ -44,7 +50,13 @@
           "severity": "error",
           "reason": "Only ALLOW/DROP supported"
         }
-      ]
+      ],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 1540,
+      "bounded_connections": 72,
+      "bounded_connection_cases": 4840,
+      "bounded_mismatches": []
     },
     {
       "fixture": "ExampleAppWithGroups.json",
@@ -68,6 +80,14 @@
           "severity": "error",
           "reason": "Unsupported service type or source-port restriction"
         }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "Unsupported service/source ports"
+        }
       ]
     },
     {
@@ -82,7 +102,13 @@
           "severity": "error",
           "reason": "Negated groups unsupported"
         }
-      ]
+      ],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 144,
+      "bounded_connections": 64,
+      "bounded_connection_cases": 1152,
+      "bounded_mismatches": []
     },
     {
       "fixture": "ExampleExprOrCondsExclude.json",
@@ -96,7 +122,13 @@
           "severity": "error",
           "reason": "Negated groups unsupported"
         }
-      ]
+      ],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 144,
+      "bounded_connections": 64,
+      "bounded_connection_cases": 1152,
+      "bounded_mismatches": []
     },
     {
       "fixture": "ExampleExprSingleScope.json",
@@ -125,6 +157,14 @@
           "severity": "error",
           "reason": "Group requires complete resolved IP membership: Slytherin"
         }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "Incomplete group Slytherin"
+        }
       ]
     },
     {
@@ -134,6 +174,12 @@
       "rules": 2,
       "status": "review_required",
       "issues": [],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 80,
+      "bounded_connections": 2,
+      "bounded_connection_cases": 400,
+      "bounded_mismatches": [],
       "connection_cases": 440,
       "mismatches": [],
       "generated_rules": 14
@@ -165,7 +211,13 @@
           "severity": "error",
           "reason": "Only ALLOW/DROP supported"
         }
-      ]
+      ],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 440,
+      "bounded_connections": 16,
+      "bounded_connection_cases": 3520,
+      "bounded_mismatches": []
     }
   ]
 }

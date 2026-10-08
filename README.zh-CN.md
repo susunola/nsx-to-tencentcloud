@@ -1,4 +1,4 @@
-# NSX → 腾讯云微隔离迁移工具 v0.3
+# NSX → 腾讯云微隔离迁移工具 v0.4
 
 [English](README.md) | 简体中文
 
@@ -116,3 +116,20 @@ manifest 模板见 examples/aws-manifest.json。它默认完整性确认值为 f
 ## 复杂公开样例试跑
 
 新增 8 份公开生成配置，覆盖分类跳转、标签 AND/OR、排除匹配、方向和作用范围。2 份完成转换并通过 484 个抽样新连接比较；6 份明确阻断。见 [试跑说明](complex-samples/README.md)，运行 `python3 complex-samples/run.py` 可复现。均为离线生成样例，不是生产导出或通用等价证明。
+
+## v0.4：限定范围策略编译
+
+显式使用 `--bounded`，支持 Environment 分类跳转和源/目的排除匹配。适配器保留每条规则所属分类。
+
+```bash
+python3 migrate.py --snapshot demo/normalized.json --mapping demo/mapping.json --out bounded-result --bounded
+python3 complex-samples/run.py
+```
+
+**这不是完整 DFW 等价转换。** 覆盖不同的已映射单 IPv4 实例之间、TCP/UDP 目的端口 1–65535 的新连接。假设源端每个执行端点未命中时拒绝。外部对端、自访问、其他协议、IPv6 和端口 0 不在范围内，目标默认拒绝，必须审核这项权限收紧。
+
+计算两端最终访问结果，正确处理 JUMP_TO_APPLICATION，按范围内集合处理排除条件，并对端口分段。输出明确的对端 /32 放行及最后拒绝；状态为 bounded_review_required，包含覆盖范围和源规则追踪。仍需提供已解析组成员，不执行任意标签表达式，不自动下发。
+
+最多支持 64 个资产、2000 条源规则、1024 个端口边界，以及保守估算的 500 万次规则检查，并受目标规则预算限制。复杂服务、源端口限制和不完整组成员仍阻断。
+
+8 份复杂公开样例中 6 份在限定模式完成转换，11104 个抽样连接比较未发现差异，52 项测试通过。结果见 [complex-samples/results](complex-samples/results) 和 [report.json](complex-samples/report.json)。仅为限定域离线证据，不是生产验证或通用证明。

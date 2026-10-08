@@ -1,4 +1,4 @@
-# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.3
+# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.4
 
 English | [简体中文](README.zh-CN.md)
 
@@ -146,3 +146,20 @@ Validation: 39 tests and 8 offline demo connection checks passed. This does not 
 ## Complex public fixture trial
 
 Eight additional public generated configurations cover policy-category jumps, tag AND/OR expressions, negation, direction, and scope. Two compile and match 484 sampled new-connection decisions; six are blocked. See [trial details](complex-samples/README.md) and run `python3 complex-samples/run.py`. These are synthetic offline tests, not production exports or a general equivalence proof.
+
+## v0.4: bounded policy compilation
+
+Use `--bounded` explicitly to compile a limited endpoint domain with category jumps and source/destination negation. The adapter now preserves each rule's policy category.
+
+```bash
+python3 migrate.py --snapshot demo/normalized.json --mapping demo/mapping.json --out bounded-result --bounded
+python3 complex-samples/run.py
+```
+
+**This is not full DFW equivalence.** The domain consists of distinct mapped single-IPv4 VM pairs, TCP/UDP destination ports 1–65535, and new connections. Unmatched source traffic is assumed denied at each endpoint. External peers, self-connections, other protocols, IPv6 and port zero are outside the domain and denied in the target. Review this intentional restriction before using the candidates.
+
+The mode evaluates both endpoints, resolves Environment `JUMP_TO_APPLICATION` control flow, applies negation inside the declared domain, partitions destination-port ranges, and produces explicit peer `/32` allows followed by default deny. Results have status `bounded_review_required`, coverage metadata, and source rule traces; no deployment is performed. Tag expressions still require resolved membership snapshots.
+
+Limits: at most 64 assets, 2000 rules, 1024 port boundary points and a conservative 5-million-rule-check work estimate, plus the existing target rule budget. Complex services, source-port restrictions and incomplete membership remain blocked.
+
+Six of eight public complex fixtures compile in bounded mode; 11,104 sampled connection comparisons show no differences. All 52 tests pass. This is finite-domain offline evidence, not live cloud validation or a universal proof. Plans are in [complex-samples/results](complex-samples/results); details are in [report.json](complex-samples/report.json).

@@ -32,3 +32,7 @@ Validation is shared in validation.py; atomic JSON output handling is shared in 
 ## Validation
 
 39 automated tests passed, including two CLI subprocess failure-recovery tests. The public analyzer sample still compiles, and all eight offline demo connection cases pass. No live NSX/Tencent Cloud calls were made.
+
+## v0.4 update
+
+A separate bounded compiler adds Environment jump control flow and negation evaluation within an explicitly limited endpoint domain. Ordinary compilation remains conservative. 52 tests pass; 11,104 finite-domain sampled connections agree with a separate first-match evaluator. Coverage and deliberate outside-domain denial are recorded in each bounded plan. This does not resolve full-schema, collector, live deployment or rollback requirements above.

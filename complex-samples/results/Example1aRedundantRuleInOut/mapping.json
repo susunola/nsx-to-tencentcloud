@@ -1,0 +1,24 @@
+{
+  "assets": [
+    {
+      "id": "A",
+      "old_ips": [
+        "192.0.2.1"
+      ],
+      "new_ips": [
+        "198.51.100.1"
+      ],
+      "security_group_id": "sg-trial-1"
+    },
+    {
+      "id": "B",
+      "old_ips": [
+        "192.0.2.2"
+      ],
+      "new_ips": [
+        "198.51.100.2"
+      ],
+      "security_group_id": "sg-trial-2"
+    }
+  ]
+}

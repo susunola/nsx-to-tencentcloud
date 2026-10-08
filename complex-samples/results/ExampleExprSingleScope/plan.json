@@ -1,0 +1,245 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "From-Dumbledore-connection/rules/9198",
+      "severity": "error",
+      "reason": "Group requires complete resolved IP membership: Slytherin"
+    },
+    {
+      "rule": "Hufflepuff-connection/rules/9202",
+      "severity": "error",
+      "reason": "Group requires complete resolved IP membership: Slytherin"
+    },
+    {
+      "rule": "Slytherin-connection/rules/9204",
+      "severity": "error",
+      "reason": "Group requires complete resolved IP membership: Slytherin"
+    },
+    {
+      "rule": "Slytherin-connection/rules/9205",
+      "severity": "error",
+      "reason": "Group requires complete resolved IP membership: Slytherin"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "From-Dumbledore-connection/rules/9199",
+      "order": 1,
+      "source": [
+        "198.51.100.3/32"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Gryffindor-connections/rules/9200",
+      "order": 2,
+      "source": [
+        "198.51.100.2/32"
+      ],
+      "destination": [
+        "198.51.100.1/32"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    },
+    {
+      "rule": "Gryffindor-connections/rules/9201",
+      "order": 3,
+      "source": [
+        "198.51.100.2/32"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Hufflepuff-connection/rules/9203",
+      "order": 5,
+      "source": [
+        "198.51.100.1/32"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Default-L3-Section/rules/10230",
+      "order": 8,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.1/32",
+      "198.51.100.2/32",
+      "198.51.100.3/32"
+    ],
+    "services": [
+      "ALL"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "Slytherin",
+      "path": "Slytherin",
+      "expression": [
+        {
+          "key": "Tag",
+          "member_type": "VirtualMachine",
+          "operator": "EQUALS",
+          "resource_type": "Condition",
+          "value": "Slytherin"
+        }
+      ],
+      "members": [],
+      "members_complete": false
+    },
+    {
+      "display_name": "Gryffindor",
+      "path": "Gryffindor",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor",
+          "id": "Gryffindor"
+        }
+      ],
+      "expression": [
+        {
+          "key": "Tag",
+          "member_type": "VirtualMachine",
+          "operator": "EQUALS",
+          "resource_type": "Condition",
+          "value": "Gryffindor"
+        }
+      ],
+      "members": [
+        "192.0.2.2"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Hufflepuff",
+      "path": "Hufflepuff",
+      "vm_members": [
+        {
+          "display_name": "Hufflepuff",
+          "id": "Hufflepuff"
+        }
+      ],
+      "expression": [
+        {
+          "key": "Tag",
+          "member_type": "VirtualMachine",
+          "operator": "EQUALS",
+          "resource_type": "Condition",
+          "value": "Hufflepuff"
+        }
+      ],
+      "members": [
+        "192.0.2.1"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Dumbledore",
+      "path": "Dumbledore",
+      "vm_members": [
+        {
+          "display_name": "Dumbledore",
+          "id": "Dumbledore"
+        }
+      ],
+      "expression": [
+        {
+          "key": "Tag",
+          "member_type": "VirtualMachine",
+          "operator": "EQUALS",
+          "resource_type": "Condition",
+          "value": "Dumbledore"
+        }
+      ],
+      "members": [
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    }
+  ]
+}

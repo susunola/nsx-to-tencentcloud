@@ -12,42 +12,45 @@
       "source": "A",
       "destination": "B",
       "protocol": "TCP",
-      "port": "1-444",
-      "source_rule_trace": [
-        [
-          "app-x/rules/1005"
-        ],
-        [
-          "app-x/rules/1005"
-        ]
-      ]
-    },
-    {
-      "source": "A",
-      "destination": "B",
-      "protocol": "TCP",
-      "port": "445",
-      "source_rule_trace": [
-        [
-          "app-x/rules/1004"
-        ],
-        [
-          "app-x/rules/1004"
-        ]
-      ]
-    },
-    {
-      "source": "A",
-      "destination": "B",
-      "protocol": "TCP",
-      "port": "446-65535",
-      "source_rule_trace": [
-        [
-          "app-x/rules/1005"
-        ],
-        [
-          "app-x/rules/1005"
-        ]
+      "port": "1-65535",
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 444,
+          "trace": [
+            [
+              "app-x/rules/1005"
+            ],
+            [
+              "app-x/rules/1005"
+            ]
+          ]
+        },
+        {
+          "start": 445,
+          "end": 445,
+          "trace": [
+            [
+              "app-x/rules/1004"
+            ],
+            [
+              "app-x/rules/1004"
+            ]
+          ]
+        },
+        {
+          "start": 446,
+          "end": 65535,
+          "trace": [
+            [
+              "app-x/rules/1005"
+            ],
+            [
+              "app-x/rules/1005"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -62,6 +65,20 @@
         [
           "app-x/rules/1005"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "app-x/rules/1005"
+            ],
+            [
+              "app-x/rules/1005"
+            ]
+          ]
+        }
       ]
     }
   ],
@@ -81,27 +98,11 @@
         "Egress": [
           {
             "Protocol": "TCP",
-            "Port": "1-444",
+            "Port": "1-65535",
             "CidrBlock": "198.51.100.2/32",
             "Action": "ACCEPT",
             "PolicyDescription": "Bounded A -> B",
             "PolicyIndex": 0
-          },
-          {
-            "Protocol": "TCP",
-            "Port": "445",
-            "CidrBlock": "198.51.100.2/32",
-            "Action": "ACCEPT",
-            "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 1
-          },
-          {
-            "Protocol": "TCP",
-            "Port": "446-65535",
-            "CidrBlock": "198.51.100.2/32",
-            "Action": "ACCEPT",
-            "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 2
           },
           {
             "Protocol": "UDP",
@@ -109,14 +110,14 @@
             "CidrBlock": "198.51.100.2/32",
             "Action": "ACCEPT",
             "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 3
+            "PolicyIndex": 1
           },
           {
             "Protocol": "ALL",
             "CidrBlock": "0.0.0.0/0",
             "Action": "DROP",
             "PolicyDescription": "Bounded domain default deny",
-            "PolicyIndex": 4
+            "PolicyIndex": 2
           }
         ]
       }
@@ -127,27 +128,11 @@
         "Ingress": [
           {
             "Protocol": "TCP",
-            "Port": "1-444",
+            "Port": "1-65535",
             "CidrBlock": "198.51.100.1/32",
             "Action": "ACCEPT",
             "PolicyDescription": "Bounded A -> B",
             "PolicyIndex": 0
-          },
-          {
-            "Protocol": "TCP",
-            "Port": "445",
-            "CidrBlock": "198.51.100.1/32",
-            "Action": "ACCEPT",
-            "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 1
-          },
-          {
-            "Protocol": "TCP",
-            "Port": "446-65535",
-            "CidrBlock": "198.51.100.1/32",
-            "Action": "ACCEPT",
-            "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 2
           },
           {
             "Protocol": "UDP",
@@ -155,14 +140,14 @@
             "CidrBlock": "198.51.100.1/32",
             "Action": "ACCEPT",
             "PolicyDescription": "Bounded A -> B",
-            "PolicyIndex": 3
+            "PolicyIndex": 1
           },
           {
             "Protocol": "ALL",
             "CidrBlock": "0.0.0.0/0",
             "Action": "DROP",
             "PolicyDescription": "Bounded domain default deny",
-            "PolicyIndex": 4
+            "PolicyIndex": 2
           }
         ],
         "Egress": [

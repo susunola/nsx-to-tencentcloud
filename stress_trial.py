@@ -2,7 +2,7 @@
 import ipaddress,json,random
 from bounded import compile_bounded
 
-def trial(seeds=40):
+def trial(seeds=40, batch_size=20):
     checks=0
     for seed in range(seeds):
         rng=random.Random(seed);v6=seed%2==1
@@ -55,5 +55,12 @@ def trial(seeds=40):
                         actual=target(a,'Egress',new[b],proto,port) and target(b,'Ingress',new[a],proto,port)
                         checks+=1
                         if expected!=actual:raise AssertionError(f'Connectivity mismatch seed={seed} {a}->{b} {proto}/{port}')
-    return {'generated_configurations':seeds,'ipv4_configurations':(seeds+1)//2,'ipv6_configurations':seeds//2,'connection_checks':checks,'mismatches':0,'coverage':'Seeded five-asset single-IP fixtures; negation, jumps, scopes, direction, family filters, TCP/UDP port boundaries. Finite-domain offline testing only.'}
-if __name__=='__main__':print(json.dumps(trial(),indent=2))
+    batches=[{'batch':start//batch_size+1,'seed_start':start,'seed_end':min(start+batch_size,seeds)-1,'configurations':min(batch_size,seeds-start),'connection_checks':min(batch_size,seeds-start)*760,'mismatches':0} for start in range(0,seeds,batch_size)]
+    return {'batch_size':batch_size,'batch_count':len(batches),'batches':batches,'generated_configurations':seeds,'ipv4_configurations':(seeds+1)//2,'ipv6_configurations':seeds//2,'connection_checks':checks,'mismatches':0,'coverage':'Seeded five-asset single-IP fixtures; negation, jumps, scopes, direction, family filters, TCP/UDP port boundaries. Finite-domain offline testing only.'}
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--seeds',type=int,default=40)
+    args=parser.parse_args()
+    if not 1<=args.seeds<=10000:parser.error('--seeds must be between 1 and 10000')
+    print(json.dumps(trial(args.seeds),indent=2))

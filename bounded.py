@@ -110,8 +110,11 @@ def compile_bounded(data, mapping, limit=200):
                     out,tout=decide(src,src,dst,'OUT',proto,lo)
                     inc,tin=decide(dst,src,dst,'IN',proto,lo);checks+=1
                     if out and inc:
-                        if allowed and allowed[-1]['end']+1==lo and allowed[-1]['trace']==[tout,tin]:allowed[-1]['end']=stop-1
-                        else:allowed.append({'start':lo,'end':stop-1,'trace':[tout,tin]})
+                        evidence={'start':lo,'end':stop-1,'trace':[tout,tin]}
+                        if allowed and allowed[-1]['end']+1==lo:
+                            allowed[-1]['end']=stop-1
+                            allowed[-1]['trace_segments'].append(evidence)
+                        else:allowed.append({'start':lo,'end':stop-1,'trace':[tout,tin],'trace_segments':[evidence]})
                 for segment in allowed:
                     # Tencent SG port zero is outside this tool's supported target representation.
                     if segment['start']==0:return blocked('Port zero allowed in bounded source; cannot represent safely')
@@ -122,7 +125,7 @@ def compile_bounded(data, mapping, limit=200):
                         cidr=str(ipaddress.ip_network(peer['new_ips'][0]))
                         es.append({'Protocol':proto,'Port':port,field:cidr,'Action':'ACCEPT','PolicyDescription':('Bounded '+a['id']+' -> '+b['id'])[:100]})
                         if len(es)+1>limit:return blocked('Bounded target rule budget exceeded')
-                    connections.append({'source':a['id'],'destination':b['id'],'protocol':proto,'port':port,'source_rule_trace':segment['trace']})
+                    connections.append({'source':a['id'],'destination':b['id'],'protocol':proto,'port':port,'source_rule_trace':segment['trace_segments'][0]['trace'] if len(segment['trace_segments'])==1 else None,'source_rule_segments':segment['trace_segments']})
     for asset in assets:
         directions=policies[asset['security_group_id']]
         version=ipaddress.ip_address(asset['new_ips'][0]).version

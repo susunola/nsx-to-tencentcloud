@@ -1,5 +1,13 @@
 {
-  "limitations": "Synthetic single-IP mappings and explicit defaults. Mapped VM pairs only; TCP/UDP new connections with sampled port boundaries. Not general equivalence, tag-expression evaluation, or live cloud validation.",
+  "limitations": "Synthetic single-IP mappings and explicit defaults. Mapped VM pairs only; sampled TCP/UDP new connections. Not general equivalence or live validation.",
+  "summary": {
+    "inputs": 20,
+    "ordinary_converted": 3,
+    "bounded_converted": 8,
+    "connection_checks": 13820,
+    "mismatches": 0,
+    "verification_errors": 0
+  },
   "fixtures": [
     {
       "fixture": "Example1aRedundantRuleInOut.json",
@@ -8,15 +16,18 @@
       "rules": 4,
       "status": "review_required",
       "issues": [],
+      "connection_cases": 44,
+      "mismatches": [],
+      "generated_rules": 10,
+      "verification_status": "matched",
       "bounded_status": "bounded_review_required",
       "bounded_issues": [],
       "bounded_partitions": 8,
-      "bounded_connections": 4,
+      "bounded_connections": 2,
       "bounded_connection_cases": 40,
       "bounded_mismatches": [],
-      "connection_cases": 44,
-      "mismatches": [],
-      "generated_rules": 10
+      "bounded_generated_rules": 8,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "Example1dExternalWithSegments.json",
@@ -88,7 +99,9 @@
       "bounded_partitions": 1540,
       "bounded_connections": 72,
       "bounded_connection_cases": 4840,
-      "bounded_mismatches": []
+      "bounded_mismatches": [],
+      "bounded_generated_rules": 166,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleAppWithGroups.json",
@@ -123,21 +136,61 @@
       ]
     },
     {
+      "fixture": "ExampleAppWithGroupsAdditionalDropRule.json",
+      "vms": 5,
+      "groups": 6,
+      "rules": 9,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "foo-app/rules/1028",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        },
+        {
+          "rule": "foo-app/rules/1027",
+          "severity": "error",
+          "reason": "Negated groups unsupported"
+        },
+        {
+          "rule": "New Policy/rules/1022",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        },
+        {
+          "rule": "New Policy/rules/1009",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "Unsupported service/source ports"
+        }
+      ]
+    },
+    {
       "fixture": "ExampleAppWithGroupsAndSegments.json",
       "vms": 5,
       "groups": 7,
       "rules": 6,
       "status": "review_required",
       "issues": [],
+      "connection_cases": 560,
+      "mismatches": [],
+      "generated_rules": 90,
+      "verification_status": "matched",
       "bounded_status": "bounded_review_required",
       "bounded_issues": [],
       "bounded_partitions": 160,
       "bounded_connections": 8,
       "bounded_connection_cases": 520,
       "bounded_mismatches": [],
-      "connection_cases": 560,
-      "mismatches": [],
-      "generated_rules": 90
+      "bounded_generated_rules": 26,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleExprAndCondsExclude.json",
@@ -157,7 +210,9 @@
       "bounded_partitions": 144,
       "bounded_connections": 64,
       "bounded_connection_cases": 1152,
-      "bounded_mismatches": []
+      "bounded_mismatches": [],
+      "bounded_generated_rules": 146,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleExprOrCondsExclude.json",
@@ -177,7 +232,9 @@
       "bounded_partitions": 144,
       "bounded_connections": 64,
       "bounded_connection_cases": 1152,
-      "bounded_mismatches": []
+      "bounded_mismatches": [],
+      "bounded_generated_rules": 146,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleExprSingleScope.json",
@@ -244,7 +301,9 @@
       "bounded_partitions": 144,
       "bounded_connections": 24,
       "bounded_connection_cases": 1152,
-      "bounded_mismatches": []
+      "bounded_mismatches": [],
+      "bounded_generated_rules": 66,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleExprTwoScopesAbstract.json",
@@ -252,6 +311,7 @@
       "groups": 6,
       "rules": 8,
       "status": "adaptation_blocked",
+      "bounded_status": "adaptation_blocked",
       "issues": [
         "assets must not be empty"
       ]
@@ -322,15 +382,18 @@
       "rules": 2,
       "status": "review_required",
       "issues": [],
+      "connection_cases": 440,
+      "mismatches": [],
+      "generated_rules": 14,
+      "verification_status": "matched",
       "bounded_status": "bounded_review_required",
       "bounded_issues": [],
       "bounded_partitions": 80,
       "bounded_connections": 2,
       "bounded_connection_cases": 400,
       "bounded_mismatches": [],
-      "connection_cases": 440,
-      "mismatches": [],
-      "generated_rules": 14
+      "bounded_generated_rules": 14,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleHogwarts.json",
@@ -365,7 +428,9 @@
       "bounded_partitions": 440,
       "bounded_connections": 16,
       "bounded_connection_cases": 3520,
-      "bounded_mismatches": []
+      "bounded_mismatches": [],
+      "bounded_generated_rules": 54,
+      "bounded_verification_status": "matched"
     },
     {
       "fixture": "ExampleHogwartsExternal.json",
@@ -422,6 +487,17 @@
           "severity": "error",
           "reason": "0.0.1.0/16 has host bits set"
         }
+      ]
+    },
+    {
+      "fixture": "ExampleHogwartsNestedExpr.json",
+      "vms": 0,
+      "groups": 7,
+      "rules": 4,
+      "status": "adaptation_blocked",
+      "bounded_status": "adaptation_blocked",
+      "issues": [
+        "assets must not be empty"
       ]
     },
     {

@@ -40,3 +40,7 @@ A separate bounded compiler adds Environment jump control flow and negation eval
 ## v0.5 update
 
 Shared bounded nested-service expansion now supports service and entry references with cycle/depth/work limits. Finite-domain IPv6 and exact address-range parsing are implemented; multi-IP assets and external peers remain excluded. Public fixture coverage increased to 18 inputs, and 40 seeded differential fixtures provide 30,400 additional IPv4/IPv6 checks. 69 tests pass. Empty-domain success is rejected. No real cloud calls were made.
+
+## v0.6 batch findings
+
+Twenty public inputs and 1,000 seeded synthetic configurations were exercised. Fixed independent-mode execution, comparison phase classification, verifier nesting/family/range handling, adjacent port fragmentation and ordinary cross-family peer expansion. Regression cases precede final verification; 78 tests pass. Detailed evidence and limitations: BATCH20.md.

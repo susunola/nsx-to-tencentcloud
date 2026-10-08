@@ -22,6 +22,22 @@
           "Slytherin-to-Slytherin-allow/rules/10220",
           "Intra-App-Policy/rules/10401"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -29,15 +45,50 @@
       "destination": "Slytherin-App",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10401"
-        ],
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10401"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10401"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -54,6 +105,22 @@
           "Slytherin-to-Slytherin-allow/rules/10220",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -61,15 +128,50 @@
       "destination": "Slytherin-Web",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10400"
-        ],
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10400"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -86,6 +188,22 @@
           "Slytherin-to-Slytherin-allow/rules/10220",
           "Intra-App-Policy/rules/10405"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -93,15 +211,50 @@
       "destination": "Slytherin-DB",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10405"
-        ],
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10405"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10405"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -118,6 +271,22 @@
           "Slytherin-to-Slytherin-allow/rules/10220",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -125,15 +294,50 @@
       "destination": "Slytherin-Web",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10400"
-        ],
-        [
-          "Slytherin-to-Slytherin-allow/rules/10220",
-          "Intra-App-Policy/rules/10400"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Slytherin-to-Slytherin-allow/rules/10220",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -150,6 +354,22 @@
           "Gryffindor-to-Gryffindor-allow/rules/10218",
           "Intra-App-Policy/rules/10401"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10401"
+            ],
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10401"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -166,6 +386,22 @@
           "Gryffindor-to-Gryffindor-allow/rules/10218",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -182,6 +418,22 @@
           "Gryffindor-to-Gryffindor-allow/rules/10218",
           "Intra-App-Policy/rules/10405"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10405"
+            ],
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10405"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -198,6 +450,22 @@
           "Gryffindor-to-Gryffindor-allow/rules/10218",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Gryffindor-to-Gryffindor-allow/rules/10218",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -214,6 +482,22 @@
           "Dumbledore-connection/rules/10221",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -221,15 +505,50 @@
       "destination": "Gryffindor-Web",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Dumbledore-connection/rules/10221",
-          "Intra-App-Policy/rules/10400"
-        ],
-        [
-          "Dumbledore-connection/rules/10221",
-          "Intra-App-Policy/rules/10400"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -246,6 +565,22 @@
           "Dumbledore-connection/rules/10221",
           "Intra-App-Policy/rules/10400"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -253,15 +588,50 @@
       "destination": "Gryffindor-Web",
       "protocol": "UDP",
       "port": "1-65535",
-      "source_rule_trace": [
-        [
-          "Dumbledore-connection/rules/10221",
-          "Intra-App-Policy/rules/10400"
-        ],
-        [
-          "Dumbledore-connection/rules/10221",
-          "Intra-App-Policy/rules/10400"
-        ]
+      "source_rule_trace": null,
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 299,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 300,
+          "end": 320,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        },
+        {
+          "start": 321,
+          "end": 65535,
+          "trace": [
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ],
+            [
+              "Dumbledore-connection/rules/10221",
+              "Intra-App-Policy/rules/10400"
+            ]
+          ]
+        }
       ]
     }
   ],

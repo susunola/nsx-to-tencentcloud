@@ -1,0 +1,189 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "app-x/rules/1004",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/30"
+    },
+    {
+      "rule": "app-x/rules/1005",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/24"
+    },
+    {
+      "rule": "app-x/rules/1006",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/20"
+    },
+    {
+      "rule": "app-x/rules/1007",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/16"
+    },
+    {
+      "rule": "app-x/rules/2000",
+      "severity": "error",
+      "reason": "172.16.10.10/16 has host bits set"
+    },
+    {
+      "rule": "app-x/rules/2200",
+      "severity": "error",
+      "reason": "172.16.10.10/16 has host bits set"
+    },
+    {
+      "rule": "app-x/rules/3000",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 192.168.0.0/16"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-x/rules/4008",
+      "order": 7,
+      "source": [
+        "198.51.100.11/32",
+        "198.51.100.12/32"
+      ],
+      "destination": [
+        "198.51.100.11/32",
+        "198.51.100.12/32"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "app-x/rules/1003",
+      "order": 8,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.11/32",
+      "198.51.100.12/32"
+    ],
+    "services": [
+      "ALL"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "default-group",
+      "path": "default-group",
+      "vm_members": [
+        {
+          "display_name": "vm1",
+          "id": "vm1"
+        },
+        {
+          "display_name": "vm2",
+          "id": "vm2"
+        },
+        {
+          "display_name": "vm3",
+          "id": "vm3"
+        },
+        {
+          "display_name": "vm4",
+          "id": "vm4"
+        },
+        {
+          "display_name": "vm5",
+          "id": "vm5"
+        },
+        {
+          "display_name": "vm6",
+          "id": "vm6"
+        },
+        {
+          "display_name": "vm7",
+          "id": "vm7"
+        },
+        {
+          "display_name": "vm8",
+          "id": "vm8"
+        },
+        {
+          "display_name": "vm9",
+          "id": "vm9"
+        },
+        {
+          "display_name": "vm10",
+          "id": "vm10"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.2",
+        "192.0.2.3",
+        "192.0.2.4",
+        "192.0.2.5",
+        "192.0.2.6",
+        "192.0.2.7",
+        "192.0.2.8",
+        "192.0.2.9",
+        "192.0.2.10"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "real-group",
+      "path": "real-group",
+      "vm_members": [
+        {
+          "display_name": "vm-no-address1",
+          "id": "vm-no-address1"
+        },
+        {
+          "display_name": "vm-no-address2",
+          "id": "vm-no-address2"
+        }
+      ],
+      "members": [
+        "192.0.2.11",
+        "192.0.2.12"
+      ],
+      "members_complete": true
+    }
+  ]
+}

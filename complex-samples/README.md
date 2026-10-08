@@ -47,3 +47,7 @@ Ten more unmodified public generated inputs cover segments, external ranges, mul
 Public input IPs are not used as real discovered asset IPs: the runner supplies synthetic documentation-address mappings. Segment topology is not implemented or inferred. External-only examples cannot establish pairwise equivalence; single-asset domains are blocked.
 
 The separate stress_trial.py creates 40 deterministic configurations, half IPv6, with category jumps, negation, scopes, family filters and port boundaries. Its independent direct-membership evaluator compares 30,400 connections. See stress-report.json. These are authored fixtures, not additional public or production exports.
+
+## v0.6 twenty-input batch
+
+The current batch contains exactly twenty inputs and runs the compilers independently. Three ordinary inputs and eight bounded inputs convert; successful comparisons across both modes total 13,820, with no differences or verifier errors. Another 1,000 synthetic configurations run in fifty batches of twenty and total 760,000 comparisons. Blocked inputs remain blocked. See [BATCH20.md](../BATCH20.md) for actual bugs fixed and limits; historical sections above describe prior batches.

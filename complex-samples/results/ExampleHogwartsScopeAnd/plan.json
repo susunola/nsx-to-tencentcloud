@@ -1,0 +1,146 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "GryffindorWeb-to-GryffindorApp/rules/10218",
+      "severity": "error",
+      "reason": "Empty service expansion"
+    },
+    {
+      "rule": "GryffindorWeb-to-GryffindorApp/rules/10219",
+      "severity": "error",
+      "reason": "Empty service expansion"
+    },
+    {
+      "rule": "SlytherinApp-to-SlytherinWeb/rules/11218",
+      "severity": "error",
+      "reason": "Empty service expansion"
+    },
+    {
+      "rule": "SlytherinApp-to-SlytherinWeb/rules/11219",
+      "severity": "error",
+      "reason": "Empty service expansion"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "Default-L3-Section/rules/10230",
+      "order": 4,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0"
+    ],
+    "services": [
+      "ALL"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "Slytherin",
+      "path": "Slytherin",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-Web",
+          "id": "Slytherin-Web"
+        },
+        {
+          "display_name": "Slytherin-App",
+          "id": "Slytherin-App"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.2"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Gryffindor",
+      "path": "Gryffindor",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor-Web",
+          "id": "Gryffindor-Web"
+        },
+        {
+          "display_name": "Gryffindor-App",
+          "id": "Gryffindor-App"
+        }
+      ],
+      "members": [
+        "192.0.2.3",
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Web",
+      "path": "Web",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-Web",
+          "id": "Slytherin-Web"
+        },
+        {
+          "display_name": "Gryffindor-Web",
+          "id": "Gryffindor-Web"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "App",
+      "path": "App",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-App",
+          "id": "Slytherin-App"
+        },
+        {
+          "display_name": "Gryffindor-App",
+          "id": "Gryffindor-App"
+        }
+      ],
+      "members": [
+        "192.0.2.2",
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    }
+  ]
+}

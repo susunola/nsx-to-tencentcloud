@@ -20,6 +20,20 @@
         [
           "app-x/rules/1004"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 445,
+          "end": 445,
+          "trace": [
+            [
+              "app-x/rules/1004"
+            ],
+            [
+              "app-x/rules/1004"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -34,6 +48,20 @@
         [
           "app-x/rules/1004"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 445,
+          "end": 445,
+          "trace": [
+            [
+              "app-x/rules/1004"
+            ],
+            [
+              "app-x/rules/1004"
+            ]
+          ]
+        }
       ]
     }
   ],

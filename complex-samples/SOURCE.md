@@ -27,3 +27,7 @@ run.py supplies synthetic single-IP VM mappings and explicit demo defaults. Grou
 - [Example1dExternalWithSegments](https://github.com/np-guard/vmware-analyzer/blob/0c02db8d13828c95e9d403027a1267368787ada7/pkg/data/json/Example1dExternalWithSegments.json)
 - [ExampleInternalWithInterDenyAllowWithSegments](https://github.com/np-guard/vmware-analyzer/blob/0c02db8d13828c95e9d403027a1267368787ada7/pkg/data/json/ExampleInternalWithInterDenyAllowWithSegments.json)
 - [ExampleHogwartsExternal](https://github.com/np-guard/vmware-analyzer/blob/0c02db8d13828c95e9d403027a1267368787ada7/pkg/data/json/ExampleHogwartsExternal.json)
+
+- [ExampleHogwartsNestedExpr](https://github.com/np-guard/vmware-analyzer/blob/0c02db8d13828c95e9d403027a1267368787ada7/pkg/data/json/ExampleHogwartsNestedExpr.json)
+
+- [ExampleAppWithGroupsAdditionalDropRule](https://github.com/np-guard/vmware-analyzer/blob/0c02db8d13828c95e9d403027a1267368787ada7/pkg/data/json/ExampleAppWithGroupsAdditionalDropRule.json)

@@ -1,0 +1,89 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "app-x/rules/1004",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 0.0.1.0/25"
+    },
+    {
+      "rule": "app-x/rules/1005",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 0.0.1.128/25"
+    },
+    {
+      "rule": "app-x/rules/1006",
+      "severity": "error",
+      "reason": "Unsupported service type or source-port restriction"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-x/rules/1003",
+      "order": 3,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0"
+    ],
+    "services": [
+      "ALL"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "default-group",
+      "path": "default-group",
+      "vm_members": [
+        {
+          "display_name": "A",
+          "id": "A"
+        },
+        {
+          "display_name": "B",
+          "id": "B"
+        },
+        {
+          "display_name": "C-no-address",
+          "id": "C-no-address"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.2",
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    }
+  ]
+}

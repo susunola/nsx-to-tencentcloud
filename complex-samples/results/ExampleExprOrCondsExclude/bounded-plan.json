@@ -20,6 +20,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -34,6 +48,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -48,6 +76,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -62,6 +104,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -76,6 +132,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -90,6 +160,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -104,6 +188,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -118,6 +216,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -132,6 +244,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -146,6 +272,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -160,6 +300,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -174,6 +328,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -188,6 +356,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -202,6 +384,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -216,6 +412,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -230,6 +440,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -244,6 +468,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -258,6 +496,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -272,6 +524,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -286,6 +552,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -300,6 +580,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -314,6 +608,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -328,6 +636,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -342,6 +664,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -356,6 +692,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -370,6 +720,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -384,6 +748,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -398,6 +776,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -412,6 +804,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -426,6 +832,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -440,6 +860,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -454,6 +888,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -468,6 +916,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -482,6 +944,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -496,6 +972,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -510,6 +1000,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -524,6 +1028,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -538,6 +1056,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -552,6 +1084,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -566,6 +1112,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -580,6 +1140,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -594,6 +1168,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -608,6 +1196,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -622,6 +1224,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -636,6 +1252,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -650,6 +1280,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -664,6 +1308,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -678,6 +1336,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -692,6 +1364,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -706,6 +1392,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -720,6 +1420,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -734,6 +1448,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -748,6 +1476,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -762,6 +1504,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -776,6 +1532,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -790,6 +1560,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -804,6 +1588,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -818,6 +1616,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -832,6 +1644,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -846,6 +1672,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -860,6 +1700,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -874,6 +1728,20 @@
         [
           "Protect-DBs/rules/9200"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9201"
+            ],
+            [
+              "Protect-DBs/rules/9200"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -888,6 +1756,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -902,6 +1784,20 @@
         [
           "Protect-DBs/rules/9198"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 1,
+          "end": 65535,
+          "trace": [
+            [
+              "Protect-DBs/rules/9199"
+            ],
+            [
+              "Protect-DBs/rules/9198"
+            ]
+          ]
+        }
       ]
     }
   ],

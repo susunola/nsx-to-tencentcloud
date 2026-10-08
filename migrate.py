@@ -148,6 +148,8 @@ def compile_snapshot(data, mapping, limit=200):
                     if len(selected) != len(a['old_ips']):
                         raise Blocked('Partial local address match: ' + a['id'])
                     for peer in peers:
+                        if net(peer).version not in {ipaddress.ip_address(ip).version for ip in selected}:
+                            continue
                         for protocol, port in svc:
                             p = {'Protocol': protocol, 'Action': 'ACCEPT' if r['action'] == 'ALLOW' else 'DROP', 'PolicyDescription': ('NSX ' + rid)[-100:]}
                             p['CidrBlock' if net(peer).version == 4 else 'Ipv6CidrBlock'] = peer

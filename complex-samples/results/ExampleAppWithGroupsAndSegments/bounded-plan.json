@@ -20,6 +20,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -34,6 +48,20 @@
         [
           "New Policy/rules/1025"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 445,
+          "end": 445,
+          "trace": [
+            [
+              "New Policy/rules/1025"
+            ],
+            [
+              "New Policy/rules/1025"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -48,6 +76,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -62,6 +104,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -76,6 +132,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -90,6 +160,20 @@
         [
           "foo-app/rules/1027"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 80,
+          "end": 80,
+          "trace": [
+            [
+              "foo-app/rules/1027"
+            ],
+            [
+              "foo-app/rules/1027"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -104,6 +188,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -118,6 +216,20 @@
         [
           "New Policy/rules/1024"
         ]
+      ],
+      "source_rule_segments": [
+        {
+          "start": 443,
+          "end": 443,
+          "trace": [
+            [
+              "New Policy/rules/1024"
+            ],
+            [
+              "New Policy/rules/1024"
+            ]
+          ]
+        }
       ]
     }
   ],

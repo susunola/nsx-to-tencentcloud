@@ -1,4 +1,4 @@
-# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.5
+# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.6
 
 English | [简体中文](README.zh-CN.md)
 
@@ -174,3 +174,9 @@ Six of eight public complex fixtures compile in bounded mode; 11,104 sampled con
 There are now 18 public generated fixtures: 3 compile in ordinary mode and 8 in bounded mode. Successful public trials compare 1,044 ordinary-mode and 12,776 bounded-mode sampled new connections with no differences. 40 additional seeded synthetic configurations (20 IPv4, 20 IPv6) compare 30,400 connections. All 69 tests pass. These are offline finite-domain checks, not production equivalence guarantees.
 
 Run `python3 stress_trial.py` to repeat the seeded trial. See [stress-report.json](complex-samples/stress-report.json), [public fixture diagnostics](complex-samples/report.json), and the [authored IPv6 nested-service example](advanced-samples/README.md). External peers, self-connections, protocols other than TCP/UDP, port zero and multiple IPs per asset remain outside bounded coverage.
+
+## v0.6: twenty-input batches and 1,000-configuration trials
+
+The public batch now runs exactly 20 inputs and both compiler modes independently. It distinguishes blocked inputs, verified comparisons and verifier errors. Fixes include independent nested/IPv6 verification, same-family ordinary peer expansion, and adjacent bounded port merging with retained trace segments.
+
+78 tests passed. Public trials compared 13,820 connections; 50 seeded batches of 20 configurations compared another 760,000 connections, without differences. Blocked configurations are not successes. Read [BATCH20.md](BATCH20.md) for findings, scope and reproduction commands.

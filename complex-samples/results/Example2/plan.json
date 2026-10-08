@@ -1,0 +1,563 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "Gryffindor-to-Gryffindor-allow/rules/10218",
+      "severity": "error",
+      "reason": "Only ALLOW/DROP supported"
+    },
+    {
+      "rule": "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+      "severity": "error",
+      "reason": "Only ALLOW/DROP supported"
+    },
+    {
+      "rule": "Slytherin-to-Slytherin-allow/rules/10220",
+      "severity": "error",
+      "reason": "Only ALLOW/DROP supported"
+    },
+    {
+      "rule": "Gryffindor-to-Dumbledore-allow/rules/10216",
+      "severity": "error",
+      "reason": "Only ALLOW/DROP supported"
+    },
+    {
+      "rule": "Gryffindor-to-Dumbledore-allow/rules/10217",
+      "severity": "error",
+      "reason": "Only ALLOW/DROP supported"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "Gryffindor-Intra-App-Policy/rules/9198",
+      "order": 5,
+      "source": [
+        "198.51.100.8/32"
+      ],
+      "destination": [
+        "198.51.100.8/32"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Gryffindor-Intra-App-Policy/rules/9195",
+      "order": 6,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "198.51.100.7/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "80"
+        ],
+        [
+          "TCP",
+          "443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Gryffindor-Intra-App-Policy/rules/9196",
+      "order": 7,
+      "source": [
+        "198.51.100.7/32"
+      ],
+      "destination": [
+        "198.51.100.8/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "8443"
+        ],
+        [
+          "TCP",
+          "9443"
+        ],
+        [
+          "TCP",
+          "10443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Gryffindor-Intra-App-Policy/rules/9197",
+      "order": 8,
+      "source": [
+        "198.51.100.8/32"
+      ],
+      "destination": [
+        "198.51.100.9/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Slytherin-Intra-App-Policy/rules/3048",
+      "order": 9,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "198.51.100.1/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "80"
+        ],
+        [
+          "TCP",
+          "443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Slytherin-Intra-App-Policy/rules/3049",
+      "order": 10,
+      "source": [
+        "198.51.100.1/32"
+      ],
+      "destination": [
+        "198.51.100.2/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "8443"
+        ],
+        [
+          "TCP",
+          "9443"
+        ],
+        [
+          "TCP",
+          "10443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Slytherin-Intra-App-Policy/rules/3050",
+      "order": 11,
+      "source": [
+        "198.51.100.2/32"
+      ],
+      "destination": [
+        "198.51.100.3/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Hufflepuff-Intra-App-Policy/rules/2048",
+      "order": 12,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "198.51.100.4/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "80"
+        ],
+        [
+          "TCP",
+          "443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Hufflepuff-Intra-App-Policy/rules/2049",
+      "order": 13,
+      "source": [
+        "198.51.100.4/32"
+      ],
+      "destination": [
+        "198.51.100.5/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "8443"
+        ],
+        [
+          "TCP",
+          "9443"
+        ],
+        [
+          "TCP",
+          "10443"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Hufflepuff-Intra-App-Policy/rules/2050",
+      "order": 14,
+      "source": [
+        "198.51.100.5/32"
+      ],
+      "destination": [
+        "198.51.100.6/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "445"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Default-L3-Section/rules/1003",
+      "order": 15,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.1/32",
+      "198.51.100.2/32",
+      "198.51.100.3/32",
+      "198.51.100.4/32",
+      "198.51.100.5/32",
+      "198.51.100.6/32",
+      "198.51.100.7/32",
+      "198.51.100.8/32",
+      "198.51.100.9/32"
+    ],
+    "services": [
+      "ALL",
+      "TCP:10443",
+      "TCP:443",
+      "TCP:445",
+      "TCP:80",
+      "TCP:8443",
+      "TCP:9443"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "Slytherin",
+      "path": "Slytherin",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-Web",
+          "id": "Slytherin-Web"
+        },
+        {
+          "display_name": "Slytherin-App",
+          "id": "Slytherin-App"
+        },
+        {
+          "display_name": "Slytherin-DB",
+          "id": "Slytherin-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.2",
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Hufflepuff",
+      "path": "Hufflepuff",
+      "vm_members": [
+        {
+          "display_name": "Hufflepuff-Web",
+          "id": "Hufflepuff-Web"
+        },
+        {
+          "display_name": "Hufflepuff-App",
+          "id": "Hufflepuff-App"
+        },
+        {
+          "display_name": "Hufflepuff-DB",
+          "id": "Hufflepuff-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.4",
+        "192.0.2.5",
+        "192.0.2.6"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Slytherin-App",
+      "path": "Slytherin-App",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-App",
+          "id": "Slytherin-App"
+        }
+      ],
+      "members": [
+        "192.0.2.2"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Gryffindor-App",
+      "path": "Gryffindor-App",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor-App",
+          "id": "Gryffindor-App"
+        }
+      ],
+      "members": [
+        "192.0.2.8"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Hufflepuff-Web",
+      "path": "Hufflepuff-Web",
+      "vm_members": [
+        {
+          "display_name": "Hufflepuff-Web",
+          "id": "Hufflepuff-Web"
+        }
+      ],
+      "members": [
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Gryffindor-DB",
+      "path": "Gryffindor-DB",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor-DB",
+          "id": "Gryffindor-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.9"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Hufflepuff-App",
+      "path": "Hufflepuff-App",
+      "vm_members": [
+        {
+          "display_name": "Hufflepuff-App",
+          "id": "Hufflepuff-App"
+        }
+      ],
+      "members": [
+        "192.0.2.5"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Hufflepuff-DB",
+      "path": "Hufflepuff-DB",
+      "vm_members": [
+        {
+          "display_name": "Hufflepuff-DB",
+          "id": "Hufflepuff-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.6"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Gryffindor",
+      "path": "Gryffindor",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor-Web",
+          "id": "Gryffindor-Web"
+        },
+        {
+          "display_name": "Gryffindor-App",
+          "id": "Gryffindor-App"
+        },
+        {
+          "display_name": "Gryffindor-DB",
+          "id": "Gryffindor-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.7",
+        "192.0.2.8",
+        "192.0.2.9"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Dumbledore",
+      "path": "Dumbledore",
+      "vm_members": [
+        {
+          "display_name": "Dumbledore1",
+          "id": "Dumbledore1"
+        },
+        {
+          "display_name": "Dumbledore2",
+          "id": "Dumbledore2"
+        }
+      ],
+      "members": [
+        "192.0.2.10",
+        "192.0.2.11"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Slytherin-Web",
+      "path": "Slytherin-Web",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-Web",
+          "id": "Slytherin-Web"
+        }
+      ],
+      "members": [
+        "192.0.2.1"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Slytherin-DB",
+      "path": "Slytherin-DB",
+      "vm_members": [
+        {
+          "display_name": "Slytherin-DB",
+          "id": "Slytherin-DB"
+        }
+      ],
+      "members": [
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "Gryffindor-Web",
+      "path": "Gryffindor-Web",
+      "vm_members": [
+        {
+          "display_name": "Gryffindor-Web",
+          "id": "Gryffindor-Web"
+        }
+      ],
+      "members": [
+        "192.0.2.7"
+      ],
+      "members_complete": true
+    }
+  ]
+}

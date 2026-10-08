@@ -7,7 +7,7 @@ trial=importlib.util.module_from_spec(spec);spec.loader.exec_module(trial)
 class ComplexFixtureTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.reports={r['fixture']:r for r in trial.run(write_report=False)}
+        cls.reports={r['fixture']:r for r in trial.run(write_report=False,quiet=True)}
     def test_supported_samples_match_sampled_connections(self):
         for name in ['Example1aRedundantRuleInOut.json','ExampleGroup4.json']:
             with self.subTest(fixture=name):

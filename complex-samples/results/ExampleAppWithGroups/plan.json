@@ -1,0 +1,312 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "foo-app/rules/1027",
+      "severity": "error",
+      "reason": "Negated groups unsupported"
+    },
+    {
+      "rule": "New Policy/rules/1022",
+      "severity": "error",
+      "reason": "Unsupported service type or source-port restriction"
+    },
+    {
+      "rule": "New Policy/rules/1009",
+      "severity": "error",
+      "reason": "Unsupported service type or source-port restriction"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "New Policy/rules/1023",
+      "order": 1,
+      "source": [
+        "198.51.100.1/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32"
+      ],
+      "destination": [
+        "198.51.100.1/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "1-65535"
+        ],
+        [
+          "UDP",
+          "1-65535"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "New Policy/rules/1024",
+      "order": 4,
+      "source": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "destination": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "80"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "New Policy/rules/1020",
+      "order": 5,
+      "source": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "destination": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "80"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    },
+    {
+      "rule": "Default Layer3 Section/rules/1021",
+      "order": 6,
+      "source": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "destination": [
+        "198.51.100.1/32",
+        "198.51.100.2/32",
+        "198.51.100.3/32",
+        "198.51.100.4/32",
+        "198.51.100.5/32"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    },
+    {
+      "rule": "Default Layer3 Section/rules/2",
+      "order": 7,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0",
+      "198.51.100.1/32",
+      "198.51.100.2/32",
+      "198.51.100.3/32",
+      "198.51.100.4/32",
+      "198.51.100.5/32"
+    ],
+    "services": [
+      "ALL",
+      "TCP:1-65535",
+      "TCP:80",
+      "UDP:1-65535"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "foo-frontend",
+      "path": "foo-frontend",
+      "vm_members": [
+        {
+          "display_name": "New-VM-3",
+          "id": "New-VM-3"
+        }
+      ],
+      "members": [
+        "192.0.2.3"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "research-test-expr-2",
+      "path": "research-test-expr-2",
+      "vm_members": [
+        {
+          "display_name": "New Virtual Machine",
+          "id": "New Virtual Machine"
+        }
+      ],
+      "members": [
+        "192.0.2.5"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "research-app",
+      "path": "research-app",
+      "vm_members": [
+        {
+          "display_name": "New-VM-1",
+          "id": "New-VM-1"
+        },
+        {
+          "display_name": "New-VM-2",
+          "id": "New-VM-2"
+        },
+        {
+          "display_name": "New-VM-3",
+          "id": "New-VM-3"
+        },
+        {
+          "display_name": "New-VM-4",
+          "id": "New-VM-4"
+        },
+        {
+          "display_name": "New Virtual Machine",
+          "id": "New Virtual Machine"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.2",
+        "192.0.2.3",
+        "192.0.2.4",
+        "192.0.2.5"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "research-seg-1",
+      "path": "research-seg-1",
+      "vm_members": [
+        {
+          "display_name": "New-VM-1",
+          "id": "New-VM-1"
+        },
+        {
+          "display_name": "New-VM-3",
+          "id": "New-VM-3"
+        },
+        {
+          "display_name": "New-VM-4",
+          "id": "New-VM-4"
+        }
+      ],
+      "members": [
+        "192.0.2.1",
+        "192.0.2.3",
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "foo-app",
+      "path": "foo-app",
+      "vm_members": [
+        {
+          "display_name": "New-VM-3",
+          "id": "New-VM-3"
+        },
+        {
+          "display_name": "New-VM-4",
+          "id": "New-VM-4"
+        }
+      ],
+      "members": [
+        "192.0.2.3",
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    },
+    {
+      "display_name": "foo-backend",
+      "path": "foo-backend",
+      "vm_members": [
+        {
+          "display_name": "New-VM-4",
+          "id": "New-VM-4"
+        }
+      ],
+      "members": [
+        "192.0.2.4"
+      ],
+      "members_complete": true
+    }
+  ]
+}

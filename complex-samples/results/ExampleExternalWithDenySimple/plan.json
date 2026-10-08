@@ -1,0 +1,84 @@
+{
+  "provenance": {
+    "captured_at": "public generated fixture; synthetic trial",
+    "assumptions": {
+      "stateful": true,
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV4"
+    },
+    "source_format": null,
+    "tags": []
+  },
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "app-x/rules/1004",
+      "severity": "error",
+      "reason": "Missing explicit address/CIDR mapping: 1.2.0.0/30"
+    },
+    {
+      "rule": "app-x/rules/1005",
+      "severity": "error",
+      "reason": "'1.2.0.0-1.2.1.255' does not appear to be an IPv4 or IPv6 network"
+    },
+    {
+      "rule": "app-x/rules/1006",
+      "severity": "error",
+      "reason": "'1.2.3.0-1.2.4.255' does not appear to be an IPv4 or IPv6 network"
+    },
+    {
+      "rule": "app-x/rules/1007",
+      "severity": "error",
+      "reason": "'1.2.1.0-1.2.3.255' does not appear to be an IPv4 or IPv6 network"
+    }
+  ],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-x/rules/1003",
+      "order": 4,
+      "source": [
+        "0.0.0.0/0"
+      ],
+      "destination": [
+        "0.0.0.0/0"
+      ],
+      "services": [
+        [
+          "ALL",
+          null
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "DROP",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "0.0.0.0/0"
+    ],
+    "services": [
+      "ALL"
+    ]
+  },
+  "security_group_requests": [],
+  "group_inventory": [
+    {
+      "display_name": "frontend",
+      "path": "frontend",
+      "vm_members": [
+        {
+          "display_name": "A",
+          "id": "A"
+        }
+      ],
+      "members": [
+        "192.0.2.1"
+      ],
+      "members_complete": true
+    }
+  ]
+}

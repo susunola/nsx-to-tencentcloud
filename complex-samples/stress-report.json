@@ -1,8 +1,412 @@
 {
-  "generated_configurations": 40,
-  "ipv4_configurations": 20,
-  "ipv6_configurations": 20,
-  "connection_checks": 30400,
+  "batch_size": 20,
+  "batch_count": 50,
+  "batches": [
+    {
+      "batch": 1,
+      "seed_start": 0,
+      "seed_end": 19,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 2,
+      "seed_start": 20,
+      "seed_end": 39,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 3,
+      "seed_start": 40,
+      "seed_end": 59,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 4,
+      "seed_start": 60,
+      "seed_end": 79,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 5,
+      "seed_start": 80,
+      "seed_end": 99,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 6,
+      "seed_start": 100,
+      "seed_end": 119,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 7,
+      "seed_start": 120,
+      "seed_end": 139,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 8,
+      "seed_start": 140,
+      "seed_end": 159,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 9,
+      "seed_start": 160,
+      "seed_end": 179,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 10,
+      "seed_start": 180,
+      "seed_end": 199,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 11,
+      "seed_start": 200,
+      "seed_end": 219,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 12,
+      "seed_start": 220,
+      "seed_end": 239,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 13,
+      "seed_start": 240,
+      "seed_end": 259,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 14,
+      "seed_start": 260,
+      "seed_end": 279,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 15,
+      "seed_start": 280,
+      "seed_end": 299,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 16,
+      "seed_start": 300,
+      "seed_end": 319,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 17,
+      "seed_start": 320,
+      "seed_end": 339,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 18,
+      "seed_start": 340,
+      "seed_end": 359,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 19,
+      "seed_start": 360,
+      "seed_end": 379,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 20,
+      "seed_start": 380,
+      "seed_end": 399,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 21,
+      "seed_start": 400,
+      "seed_end": 419,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 22,
+      "seed_start": 420,
+      "seed_end": 439,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 23,
+      "seed_start": 440,
+      "seed_end": 459,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 24,
+      "seed_start": 460,
+      "seed_end": 479,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 25,
+      "seed_start": 480,
+      "seed_end": 499,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 26,
+      "seed_start": 500,
+      "seed_end": 519,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 27,
+      "seed_start": 520,
+      "seed_end": 539,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 28,
+      "seed_start": 540,
+      "seed_end": 559,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 29,
+      "seed_start": 560,
+      "seed_end": 579,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 30,
+      "seed_start": 580,
+      "seed_end": 599,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 31,
+      "seed_start": 600,
+      "seed_end": 619,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 32,
+      "seed_start": 620,
+      "seed_end": 639,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 33,
+      "seed_start": 640,
+      "seed_end": 659,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 34,
+      "seed_start": 660,
+      "seed_end": 679,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 35,
+      "seed_start": 680,
+      "seed_end": 699,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 36,
+      "seed_start": 700,
+      "seed_end": 719,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 37,
+      "seed_start": 720,
+      "seed_end": 739,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 38,
+      "seed_start": 740,
+      "seed_end": 759,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 39,
+      "seed_start": 760,
+      "seed_end": 779,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 40,
+      "seed_start": 780,
+      "seed_end": 799,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 41,
+      "seed_start": 800,
+      "seed_end": 819,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 42,
+      "seed_start": 820,
+      "seed_end": 839,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 43,
+      "seed_start": 840,
+      "seed_end": 859,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 44,
+      "seed_start": 860,
+      "seed_end": 879,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 45,
+      "seed_start": 880,
+      "seed_end": 899,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 46,
+      "seed_start": 900,
+      "seed_end": 919,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 47,
+      "seed_start": 920,
+      "seed_end": 939,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 48,
+      "seed_start": 940,
+      "seed_end": 959,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 49,
+      "seed_start": 960,
+      "seed_end": 979,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    },
+    {
+      "batch": 50,
+      "seed_start": 980,
+      "seed_end": 999,
+      "configurations": 20,
+      "connection_checks": 15200,
+      "mismatches": 0
+    }
+  ],
+  "generated_configurations": 1000,
+  "ipv4_configurations": 500,
+  "ipv6_configurations": 500,
+  "connection_checks": 760000,
   "mismatches": 0,
   "coverage": "Seeded five-asset single-IP fixtures; negation, jumps, scopes, direction, family filters, TCP/UDP port boundaries. Finite-domain offline testing only."
 }

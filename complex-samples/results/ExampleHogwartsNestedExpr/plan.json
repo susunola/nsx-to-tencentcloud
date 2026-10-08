@@ -1,0 +1,7 @@
+{
+  "status": "blocked",
+  "security_group_requests": [],
+  "issues": [
+    "assets must not be empty"
+  ]
+}

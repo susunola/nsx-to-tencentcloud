@@ -1,0 +1,77 @@
+{
+  "scope": "Offline demo only; not real network probes or general equivalence proof",
+  "cases": [
+    {
+      "source": "10.0.1.11",
+      "destination": "10.0.2.21",
+      "protocol": "TCP",
+      "port": 445,
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "source": "10.0.1.11",
+      "destination": "10.0.2.21",
+      "protocol": "TCP",
+      "port": 22,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.1.11",
+      "destination": "10.0.2.21",
+      "protocol": "TCP",
+      "port": 443,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.1.11",
+      "destination": "10.0.2.21",
+      "protocol": "UDP",
+      "port": 445,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.2.21",
+      "destination": "10.0.1.11",
+      "protocol": "TCP",
+      "port": 445,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.2.21",
+      "destination": "10.0.1.11",
+      "protocol": "TCP",
+      "port": 22,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.2.21",
+      "destination": "10.0.1.11",
+      "protocol": "TCP",
+      "port": 443,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "source": "10.0.2.21",
+      "destination": "10.0.1.11",
+      "protocol": "UDP",
+      "port": 445,
+      "expected": false,
+      "actual": false,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "source_format": "AWS Labs local manager export",
+  "captured_at": "REPLACE_WITH_REAL_COLLECTION_TIME",
+  "export_complete": false,
+  "exclude_list_reviewed": false,
+  "excluded_asset_ids": [],
+  "policy_order": [
+    "REPLACE_WITH_ALL_POLICY_IDS_IN_EFFECTIVE_ORDER"
+  ],
+  "rule_arrays_in_effective_order": false,
+  "allow_vm_members_from_mapping": false,
+  "rule_defaults": {},
+  "files": {
+    "policies": "dfw.json",
+    "rules": "dfw_details.json",
+    "groups": "cgw-groups.json",
+    "services": "services.json",
+    "tags": "tags.json"
+  },
+  "group_members": {
+    "/infra/domains/default/groups/REPLACE": {
+      "ips": [
+        "192.168.10.11"
+      ],
+      "complete": false
+    }
+  }
+}

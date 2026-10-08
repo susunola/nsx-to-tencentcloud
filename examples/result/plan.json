@@ -1,0 +1,94 @@
+{
+  "status": "review_required",
+  "issues": [],
+  "cloud_firewall_review": [
+    {
+      "rule": "app-to-db",
+      "order": 1,
+      "source": [
+        "10.0.1.11/32"
+      ],
+      "destination": [
+        "10.0.2.21/32"
+      ],
+      "services": [
+        [
+          "TCP",
+          "3306"
+        ]
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "direction": "IN_OUT",
+      "action": "ALLOW",
+      "logged": false
+    }
+  ],
+  "parameter_template_candidates": {
+    "addresses": [
+      "10.0.1.11/32",
+      "10.0.2.21/32"
+    ],
+    "services": [
+      "TCP:3306"
+    ]
+  },
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-example-app",
+      "SecurityGroupPolicySet": {
+        "Ingress": [],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-to-db",
+            "CidrBlock": "10.0.2.21/32",
+            "Port": "3306",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-example-db",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Action": "ACCEPT",
+            "PolicyDescription": "NSX app-to-db",
+            "CidrBlock": "10.0.1.11/32",
+            "Port": "3306",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": []
+      }
+    }
+  ],
+  "group_inventory": [
+    {
+      "path": "/infra/domains/default/groups/app",
+      "expression": [
+        {
+          "resource_type": "Condition",
+          "key": "Tag",
+          "value": "role|app"
+        }
+      ],
+      "members_complete": true,
+      "members": [
+        "192.168.10.11"
+      ]
+    },
+    {
+      "path": "/infra/domains/default/groups/db",
+      "members_complete": true,
+      "members": [
+        "192.168.20.21"
+      ]
+    }
+  ]
+}

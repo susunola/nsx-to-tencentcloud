@@ -1,0 +1,8 @@
+{
+  "assets": [
+    {"id":"vm-uuid-app", "old_ips":["192.168.10.11"], "new_ips":["10.0.1.11"], "security_group_id":"sg-example-app"},
+    {"id":"vm-uuid-db", "old_ips":["192.168.20.21"], "new_ips":["10.0.2.21"], "security_group_id":"sg-example-db"}
+  ],
+  "address_map":{},
+  "retain_addresses":[]
+}

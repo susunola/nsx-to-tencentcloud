@@ -1,0 +1,16 @@
+{
+  "source_format": "np-guard generated Example1; DEMO ONLY",
+  "captured_at": "synthetic fixture; not a live collection",
+  "export_complete": true,
+  "exclude_list_reviewed": true,
+  "excluded_asset_ids": [],
+  "policy_order": [
+    "app-x"
+  ],
+  "rule_arrays_in_effective_order": true,
+  "allow_vm_members_from_mapping": true,
+  "rule_defaults": {
+    "stateful": true,
+    "ip_protocol": "IPV4"
+  }
+}

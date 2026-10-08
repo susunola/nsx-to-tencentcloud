@@ -1,4 +1,4 @@
-# NSX → 腾讯云微隔离迁移工具 v0.2
+# NSX → 腾讯云微隔离迁移工具 v0.3
 
 [English](README.md) | 简体中文
 
@@ -101,3 +101,14 @@ manifest 模板见 examples/aws-manifest.json。它默认完整性确认值为 f
 ## 许可与来源
 
 原创工具代码采用 Apache-2.0 许可。public-sample/Example1.json 来自 np-guard/vmware-analyzer，保留原 Apache-2.0 许可，固定版本和来源见 public-sample/SOURCE.md。AWS Labs 项目仅作为导出文件合同参考，未复制其代码。
+
+## v0.3 加固
+
+- 严格校验 JSON 布尔值、数组、整数顺序及组/服务唯一标识，拒绝混合 ANY。
+- 规范化 IPv4/IPv6，检查新旧资产地址冲突、映射冲突、保留网段覆盖已改址资产，以及 CIDR 与资产映射不一致。
+- 展开过程中检查每方向预算；单条源规则最多展开 100000 个候选。
+- 每个 JSON 输入文件最大 64 MiB，拒绝重复键和非有限数值。
+- 显式空 scope 不再静默继承策略范围。
+- JSON 原子替换；失败重跑会将旧 JSON 输出改成阻断标记。以 plan.json 和退出码为准，输入失败时旧 CSV 可能仍存在。
+
+验证：39 项测试和 8 个离线连接检查通过。尚未验证真实云执行，也不是通用等价证明。剩余工作见 [REVIEW.md](REVIEW.md)。

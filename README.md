@@ -1,4 +1,4 @@
-# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.2
+# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.3
 
 English | [简体中文](README.zh-CN.md)
 
@@ -131,3 +131,14 @@ These references inform field design; they do not constitute vendor certificatio
 Original tool code is licensed under [Apache-2.0](LICENSE). `public-sample/Example1.json` comes from `np-guard/vmware-analyzer`; its original Apache-2.0 license is retained. See [public-sample/SOURCE.md](public-sample/SOURCE.md) for the pinned revision and source.
 
 The AWS Labs project was used only as a reference for the export file contract. Its source code was not copied.
+
+## v0.3 hardening
+
+- Strict JSON booleans, arrays, integer ordering, and unique group/service identities. Mixed `ANY` references are rejected.
+- Canonical IPv4/IPv6 validation detects old/new asset collisions, conflicting mappings, retained ranges overlapping changed addresses, and CIDR mappings inconsistent with asset mappings.
+- Per-direction rule budgets are checked during expansion; a single rule cannot expand beyond 100,000 candidates.
+- JSON input is limited to 64 MiB per file. Duplicate keys and non-finite numbers are rejected.
+- Explicit empty scope no longer silently inherits policy scope.
+- JSON outputs are replaced atomically. Failed reruns replace previous JSON outputs with a blocked marker. `plan.json` and the process exit code are authoritative; an older CSV may remain after input failure.
+
+Validation: 39 tests and 8 offline demo connection checks passed. This does not validate real cloud enforcement or establish general policy equivalence. See [REVIEW.md](REVIEW.md) for remaining work.

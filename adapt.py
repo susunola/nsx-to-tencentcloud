@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Normalize public analyzer JSON or AWS Labs NSX export directories."""
 import argparse, copy, json, pathlib, sys
+from output_io import write_json, invalidate
+from validation import read_json, validate_mapping, booleans, object_value, integer
+
 CATEGORIES = ['Ethernet', 'Emergency', 'Infrastructure', 'Environment', 'Application']
 
 def read(path):
-    return json.loads(pathlib.Path(path).read_text())
+    return read_json(path)
 
 def results(value):
     if isinstance(value, list): return value
@@ -14,6 +17,9 @@ def results(value):
     return value['results']
 
 def normalize(policies, groups, services, mapping, manifest, tags=None):
+    validate_mapping(mapping)
+    object_value(manifest, 'manifest')
+    booleans(manifest, ['export_complete','exclude_list_reviewed','allow_vm_members_from_mapping','rule_arrays_in_effective_order'], 'manifest')
     if not manifest.get('export_complete') or not manifest.get('exclude_list_reviewed'):
         raise ValueError('Manifest must attest export_complete and exclude_list_reviewed')
     if manifest.get('excluded_asset_ids'):
@@ -29,6 +35,8 @@ def normalize(policies, groups, services, mapping, manifest, tags=None):
         if not key: raise ValueError('Group path required')
         if key in members:
             entry = members[key]
+            object_value(entry, 'group membership')
+            booleans(entry, ['complete'], 'group membership')
             g.update(members=entry['ips'], members_complete=entry.get('complete', False))
         elif manifest.get('allow_vm_members_from_mapping') and g.get('vm_members') is not None:
             ips = []
@@ -56,6 +64,9 @@ def normalize(policies, groups, services, mapping, manifest, tags=None):
     assumptions = manifest.get('rule_defaults', {})
     for pid in ordered:
         policy = indexed[pid]
+        booleans(policy, ['stateful','disabled'], 'policy')
+        if policy.get('disabled') is True:
+            raise ValueError('Disabled policy requires explicit handling: ' + pid)
         category = policy.get('category')
         if category not in CATEGORIES or category == 'Ethernet':
             raise ValueError('Unsupported policy category: ' + str(category))
@@ -67,6 +78,7 @@ def normalize(policies, groups, services, mapping, manifest, tags=None):
             raise ValueError('Separate default_rule requires explicit ordering in rules')
         if all('sequence_number' in r for r in rule_list):
             numbers = [r['sequence_number'] for r in rule_list]
+            for number in numbers: integer(number, 'sequence_number')
             if len(numbers) != len(set(numbers)): raise ValueError('Ambiguous rule sequence in ' + pid)
             rule_list.sort(key=lambda r:r['sequence_number'])
         elif not manifest.get('rule_arrays_in_effective_order'):
@@ -74,6 +86,8 @@ def normalize(policies, groups, services, mapping, manifest, tags=None):
         if not rule_list: raise ValueError('Missing/empty policy rules: ' + pid)
         for source in rule_list:
             r = copy.deepcopy(source)
+            if 'scope' in r and not r['scope']:
+                raise ValueError('Explicit empty scope must not inherit policy scope')
             r['path'] = r.get('path') or f"{pid}/rules/{r.get('id',r.get('rule_id',r.get('display_name')))}"
             r['effective_order'] = len(normalized_rules)
             r['scope'] = r.get('scope') or policy.get('scope')
@@ -119,9 +133,13 @@ def main():
         mapping, manifest = read(a.mapping), read(a.manifest)
         output = from_analyzer(read(a.input),mapping,manifest) if a.format == 'analyzer' else from_aws(a.input,mapping,manifest)
         dest = pathlib.Path(a.out); dest.parent.mkdir(parents=True,exist_ok=True)
-        dest.write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
+        write_json(dest, output)
         print(f"Normalized {len(output['rules'])} rules, {len(output['groups'])} groups")
         return 0
     except (KeyError, TypeError, ValueError, OSError) as e:
+        try:
+            invalidate(a.out, str(e))
+        except OSError as output_error:
+            print('Could not invalidate output: ' + str(output_error), file=sys.stderr)
         print('Adaptation blocked: '+str(e),file=sys.stderr); return 1
 if __name__ == '__main__': sys.exit(main())

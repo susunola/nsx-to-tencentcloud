@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Offline, conservative NSX Policy snapshot to Tencent Cloud review compiler."""
 import argparse, csv, ipaddress, json, pathlib, sys
+from collections import Counter
+from output_io import write_json, invalidate
+
+from validation import validate_mapping, validate_snapshot, read_json, strings, object_value, integer
 
 class Blocked(ValueError):
     pass
@@ -9,6 +13,9 @@ def net(value):
     return ipaddress.ip_network(value, strict=True)
 
 def compile_snapshot(data, mapping, limit=200):
+    integer(limit, 'rule budget')
+    validate_mapping(mapping)
+    validate_snapshot(data)
     assets = mapping['assets']
     groups = {g['path']: g for g in data['groups']}
     services = {s['path']: s for s in data['services']}
@@ -27,12 +34,12 @@ def compile_snapshot(data, mapping, limit=200):
         policies[a['security_group_id']] = {'Ingress': [], 'Egress': []}
     if len(all_old) != len(set(all_old)):
         raise ValueError('Duplicate old IP; overlapping address spaces are unsupported')
-    address_map = dict(mapping.get('address_map', {}))
+    address_map = {str(net(k)): str(net(v)) for k, v in mapping.get('address_map', {}).items()}
     for a in assets:
         if len(a['old_ips']) != len(a['new_ips']):
             raise ValueError('old_ips/new_ips must be positionally paired')
-        address_map.update(zip(a['old_ips'], a['new_ips']))
-    retain = set(mapping.get('retain_addresses', []))
+        address_map.update((str(net(k)), str(net(v))) for k, v in zip(a['old_ips'], a['new_ips']))
+    retain = {str(net(v)) for v in mapping.get('retain_addresses', [])}
 
     def old_addresses(refs):
         out = []
@@ -59,9 +66,9 @@ def compile_snapshot(data, mapping, limit=200):
         out = []
         for value in values:
             n = net(value)
-            if n.prefixlen == 0 or value in retain:
+            if n.prefixlen == 0 or str(n) in retain:
                 out.append(str(n)); continue
-            replacement = address_map.get(value, address_map.get(str(n.network_address)) if n.num_addresses == 1 else None)
+            replacement = address_map.get(str(n))
             if replacement is None:
                 raise Blocked('Missing explicit address/CIDR mapping: ' + value)
             target = net(replacement)
@@ -87,6 +94,9 @@ def compile_snapshot(data, mapping, limit=200):
             entries += services[ref]['service_entries']
         out = []
         for e in entries:
+            object_value(e, 'service entry')
+            strings(e.get('source_ports', []), 'source_ports')
+            strings(e.get('destination_ports', []), 'destination_ports')
             if e.get('resource_type') != 'L4PortSetServiceEntry' or e.get('source_ports'):
                 raise Blocked('Unsupported service type or source-port restriction')
             protocol = e.get('l4_protocol')
@@ -130,6 +140,7 @@ def compile_snapshot(data, mapping, limit=200):
             new_src, new_dst = translate(src), translate(dst)
             svc = service_entries(r)
             pending = []
+            pending_counts = Counter()
             for a in assets:
                 scoped = [ip for ip in a['old_ips'] if contains(scope, ip)]
                 if not scoped: continue
@@ -147,6 +158,12 @@ def compile_snapshot(data, mapping, limit=200):
                             p['CidrBlock' if net(peer).version == 4 else 'Ipv6CidrBlock'] = peer
                             if port: p['Port'] = port
                             pending.append((a['security_group_id'], direction, p))
+                            if len(pending) > 100000:
+                                raise Blocked('Rule expansion exceeds 100000 candidate limit')
+                            key = (a['security_group_id'], direction)
+                            pending_counts[key] += 1
+                            if len(policies[key[0]][direction]) + pending_counts[key] > limit:
+                                raise Blocked('Rule expansion exceeds configured per-direction budget')
             if not pending: raise Blocked('No mapped enforcement endpoint; review transit/unmigrated scope')
             for sg, direction, p in pending:
                 policies[sg][direction].append(p)
@@ -170,13 +187,17 @@ def main():
     p.add_argument('--out', required=True); p.add_argument('--rule-budget', type=int, default=200)
     a = p.parse_args()
     try:
-        result = compile_snapshot(json.loads(pathlib.Path(a.snapshot).read_text()), json.loads(pathlib.Path(a.mapping).read_text()), a.rule_budget)
+        result = compile_snapshot(read_json(a.snapshot), read_json(a.mapping), a.rule_budget)
         out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
-        (out / 'plan.json').write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
+        write_json(out / 'plan.json', result)
         with (out / 'issues.csv').open('w', newline='') as f:
             w = csv.DictWriter(f, fieldnames=['rule', 'severity', 'reason']); w.writeheader(); w.writerows(result['issues'])
         print(result['status'] + ': ' + str(out / 'plan.json'))
         return 2 if result['status'] == 'blocked' else 0
     except (ValueError, KeyError, TypeError, OSError) as e:
+        try:
+            invalidate(pathlib.Path(a.out) / 'plan.json', str(e))
+        except OSError as output_error:
+            print('Could not invalidate output: ' + str(output_error), file=sys.stderr)
         print('Invalid input: ' + str(e), file=sys.stderr); return 1
 if __name__ == '__main__': sys.exit(main())

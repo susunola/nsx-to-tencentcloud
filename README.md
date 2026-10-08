@@ -1,81 +1,95 @@
-# NSX → 腾讯云微隔离迁移工具 v0.2
+# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.2
 
-Python 3 标准库离线工具。第一版以腾讯云为目标：输出安全组请求候选、参数模板候选和 Cloud Firewall 策略审阅数据。它是迁移规划编译器，不是生产一键迁移器。不会联网、创建资源、修改安全组或读取凭证。
+English | [简体中文](README.zh-CN.md)
 
-## 快速运行
+An offline Python 3 tool using only the standard library. It generates Tencent Cloud Security Group rule candidates, parameter template candidates, and Cloud Firewall policy review data from NSX DFW configuration and asset mappings.
 
-在本目录执行：
+This is a migration planning prototype. It does not connect to NSX or Tencent Cloud, read credentials, create resources, deploy rules, or perform rollback. Production configurations have not been validated.
+
+## Quick start
+
+Run from the repository root:
 
 ```bash
 python3 migrate.py --snapshot examples/snapshot.json --mapping examples/mapping.json --out result
 python3 -m unittest discover -s . -v
 ```
 
-退出码：0 = 生成待审阅方案；2 = 存在阻断项，安全组请求整体为空；1 = 输入错误。0 不代表已验证等价或可上线。
+Exit codes:
 
-输出 `plan.json` 和 `issues.csv`：
+- `0`: A plan was generated for review. This does not establish policy equivalence or deployment readiness.
+- `2`: Conversion is blocked. The entire Security Group request list is empty.
+- `1`: Invalid input or an input/output error.
 
-- `security_group_requests`：腾讯云 SecurityGroupId + SecurityGroupPolicySet 结构的候选数据，仅完整转换成功时生成。不可直接用于增量追加现有规则。
-- `cloud_firewall_review`：保留业务连接、原作用范围、顺序和日志意图的中间策略；不是 Cloud Firewall API 请求。DFW scope 与串行防火墙路由不能直接等价，必须设计检查路径。
-- `parameter_template_candidates`：去重地址和协议端口候选，不是模板创建请求；没有创建模板或生成模板 ID 引用。
-- `group_inventory`：保留原组表达式，辅助标签/组成员映射审阅。
+## Outputs
 
-## 输入合同
+The tool writes `plan.json` and `issues.csv`.
 
-当前接受整理后的 NSX-T/4.x Policy JSON 快照，结构见 examples。**不直接接受任意原始 API 响应、控制台 CSV 或 NSX-V XML。** 收集器/人工整理必须：
+| Field | Contents |
+|---|---|
+| `security_group_requests` | Candidates using Tencent Cloud's `SecurityGroupId` and `SecurityGroupPolicySet` structure. Generated only when no blocking errors exist; do not append directly to existing rules. |
+| `cloud_firewall_review` | Intermediate connection policies retaining source scope, order, and logging intent. These are not Cloud Firewall API requests. DFW enforcement scope must be reconciled with firewall routing and inspection paths. |
+| `parameter_template_candidates` | Deduplicated addresses and protocol/port values. These are not template creation requests; no template IDs or references are created. |
+| `group_inventory` | Original group expressions retained for reviewing tag and membership mappings. |
+| `provenance` | Collection metadata and explicit assumptions supplied by the adapter, when present. |
 
-1. 获取所有 Policy、Rules、Groups、Services，处理所有分页；把规则放进 `rules` 数组。
-2. 按真实 category、policy 顺序和规则顺序计算全局唯一 `effective_order`；不能只按 rule.sequence_number 排序。
-3. 把 policy 继承的 scope、stateful 等字段落实到每条规则；提供明确的 direction 和 ip_protocol。
-4. 每个组使用 `/members/ip-addresses` 的完整成员快照填充 members，确认完整后才设 members_complete=true。标签和嵌套表达式保留在 expression，当前不执行表达式。
-5. 检查 DFW 排除列表、默认策略、Ethernet/L2 规则、网卡和 IP 发现完整性。不在快照中的规则/资产无法被工具检测，因此必须人工确认快照完整。
-6. 服务使用 Policy 的 service_entries；当前仅支持 TCP/UDP 目的端口服务，不支持嵌套服务引用。
+## Normalized input contract
 
-成员地址应写成单 IP 或严格 CIDR；不支持 IP 范围字符串。组快照必须带采集时间并在切换前重新采集（工具不会检查时间）。
+The compiler accepts normalized NSX-T/4.x Policy JSON snapshots; see [examples/snapshot.json](examples/snapshot.json). It does not directly accept arbitrary raw API responses, console CSV files, or NSX-V XML. The adapter supports the specific formats described below.
 
-## 资产与地址变化
+Collectors or manual preparation must:
 
-mapping.assets 每项表示一个明确的目标保护单元，id 使用稳定 VM/CMDB 标识。old_ips 和 new_ips 按位置一一对应；security_group_id 为事先确定的目标组 ID。
+1. Collect all policies, rules, groups, and services, consuming every API page. Place rules in the `rules` array.
+2. Assign a unique global `effective_order` based on the actual category, policy, and rule order. Sorting only by a rule's `sequence_number` is insufficient.
+3. Resolve policy inheritance, including `scope` and `stateful`, for each rule. Supply explicit `direction` and `ip_protocol` values.
+4. Populate group `members` with a complete resolved IP membership snapshot from `/members/ip-addresses`. Set `members_complete=true` only after checking completeness. Tag and nested expressions are retained but not evaluated.
+5. Review the DFW exclusion list, default policies, Ethernet/L2 rules, NICs, and IP discovery completeness. Missing rules or assets cannot be detected from an incomplete snapshot.
+6. Provide Policy `service_entries`. Only TCP/UDP destination-port services are supported; nested service references are unsupported.
 
-本版要求每个保护单元使用独立安全组，且该组只关联这一个保护单元，以避免共享安全组让权限扩大。SG ID 不能重复。不能把没有映射的机器加入这些组。不输出云上组引用，使用新地址 /32 或 /128，适合作为保守试迁基线；后续角色组聚合需要验证成员的完整有效策略一致。
+Member addresses must be individual IPs or strict CIDRs, not IP range strings. Record the collection time and refresh group membership before cutover; the compiler does not validate snapshot freshness.
 
-- `address_map`：显式额外旧地址/CIDR到新地址/CIDR映射；只允许同地址族、同地址集大小，仍需人工确认成员范围。
-- `retain_addresses`：明确无需改变的本地或第三方 CIDR白名单。单 IP 也可填入。
-- ANY 保留为 IPv4/IPv6 全网，受规则 ip_protocol 过滤；原 ANY 权限也必须审阅。
-- 旧资产 IP 重复时拒绝输入，不支持重叠地址空间和多 VPC 身份解析。
-- NAT、混合迁移批次、目标服务托管化、合并/拆分资产需要提供正确的可见地址和单独方案，不能自动推断。
+## Asset mapping and changed IP addresses
 
-## 语义和限制
+Each entry in `mapping.assets` represents one target enforcement unit. Use a stable VM or CMDB identifier for `id`. Pair `old_ips` and `new_ips` positionally, and supply the intended target `security_group_id`.
 
-根据 scope 和方向计算每个目标保护单元的入/出站，仅在本地地址匹配规则端点时生成。部分网卡/地址匹配会阻断。ALLOW→ACCEPT，DROP→DROP，按 effective_order 保持相对顺序。不会为了返回流量增加反向业务规则。
+This version requires a dedicated Security Group for each enforcement unit, associated exclusively with that unit. Security Group IDs must be unique, and unmapped instances must not be added to those groups. The tool emits new IP `/32` or `/128` addresses rather than cloud Security Group references. Aggregating instances into role groups requires verifying that their complete effective policies are identical.
 
-阻断：组不完整、地址无映射、排除匹配、L7 profile、非有状态规则、REJECT、源端口、未知服务、无可映射执行端点、超过配置规则预算。默认预算为每组每方向 200，**这是工具预算，不是对实际账号配额的保证**，部署前核对目标地域及配额。
+- `address_map`: Explicit additional old-address/CIDR to new-address/CIDR mappings. Address family and address-set size must remain the same; membership still requires review.
+- `retain_addresses`: Explicit addresses or CIDRs for on-premises or third-party endpoints that remain unchanged.
+- `ANY`: Preserved as IPv4/IPv6 all-address ranges, filtered by the rule's `ip_protocol`. Review these permissions as well.
+- Duplicate old asset IPs are rejected. Overlapping address spaces and identity resolution across multiple VPCs are unsupported.
+- NAT, mixed migration waves, replacement with managed services, and merging or splitting assets require explicit visible-address mappings and separate planning.
 
-NSX per-rule logging 只警告，无法在原生 SG 候选中保留。动态标签组转换为成员快照，动态持续同步尚未实现。未知扩展字段没有完整语义检查；输入限于上述受支持子集。
+See [examples/mapping.json](examples/mapping.json).
 
-## 推荐实施方式
+## Conversion semantics and limits
 
-1. 完整导出并审核资产映射，先做一个依赖明确的应用。
-2. 在隔离目标环境创建空的专属安全组，核对缺省行为、实例绑定和全部其他安全组的共同效果。工具不导出实例绑定操作。
-3. 审阅计划，确认隐式默认拒绝与原完整策略一致；原默认放行必须作为显式规则进入快照。
-4. 使用 SDK/IaC 下发审阅后的规则，保持完整规则列表顺序。工具没有下发、快照或回滚功能，需在执行层实现。
-5. 做允许/拒绝的连接矩阵测试，同时检查 DNS、认证、监控、备份、批处理；使用新连接测试。
-6. 分批切换，重新采集组成员，撤除过渡规则。角色组聚合、模板创建、Cloud Firewall API 适配应在 PoC 验证后扩展。
+The compiler uses scope and direction to generate ingress/egress rules for each mapped enforcement unit, only when its local addresses match the relevant endpoint. Partial NIC/address matches block conversion.
 
-## 官方资料
+`ALLOW` becomes `ACCEPT`; `DROP` remains `DROP`. Relative order follows `effective_order`. No reverse business-access rules are added merely to permit return traffic.
 
-- NSX Rule schema：https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/schemas_Rule.html
-- NSX 组、成员和服务导出：https://knowledge.broadcom.com/external/article/429635/exporting-all-nsxt-security-groups-via-a.html
-- 腾讯云安全组数据结构：https://cloud.tencent.cn/document/api/215/15824
-- 腾讯云安全组和规则创建：https://cloud.tencent.com/document/api/215/43279
+Blocking conditions include incomplete groups, missing address mappings, negated groups, L7 profiles, non-stateful rules, `REJECT`, source-port restrictions, unknown services, no mapped enforcement endpoint, and exceeding the configured rule budget.
 
-这些资料用于字段设计，不代表厂商认证此工具。生产数据尚未验证。
+The default budget is 200 rules per Security Group per direction. **This is a tool budget, not a guarantee of account quotas.** Check the target region and account limits before deployment.
 
-## v0.2：原始输入适配与试运行
+NSX per-rule logging produces a warning because it is not preserved in native Security Group candidates. Dynamic tag groups become membership snapshots; continuous synchronization is not implemented. Unknown extension fields do not receive comprehensive semantic validation. Inputs must stay within the supported subset.
 
-新增 `adapt.py`，支持公开 vmware-analyzer 资源 JSON 和 AWS Labs NSX 导出目录。原编译器继续接受规范化快照。详见 TRIAL.md。
+## Recommended migration workflow
 
-公开样例试运行，在本目录执行：
+1. Collect a complete export and review the asset mapping. Start with one application whose dependencies are understood.
+2. Create empty, dedicated Security Groups in an isolated target environment. Check default behavior, instance associations, and the combined effect of all other attached groups. The tool does not generate association operations.
+3. Review the plan and confirm that implicit default denial matches the complete source policy. Represent source default-allow behavior explicitly in the snapshot.
+4. Deploy reviewed rules through an SDK or IaC, preserving the complete rule list order. Deployment snapshots and rollback must be implemented separately.
+5. Test allowed and denied connections using new sessions. Include DNS, authentication, monitoring, backup, and batch jobs.
+6. Cut over in waves, refresh group membership, and remove temporary rules. Extend role-group aggregation, template creation, and Cloud Firewall API support after validating the PoC.
+
+## Raw input adapters and demo
+
+`adapt.py` supports the public `vmware-analyzer` resource JSON format and an AWS Labs NSX export directory. The compiler continues to consume normalized snapshots.
+
+See [TRIAL.md](TRIAL.md) for the trial report in Chinese. The trial passed 17 tests and 8 offline connection checks. It used a generated public fixture and explicitly supplied demo IPs and missing fields; it was not a live NSX or Tencent Cloud test.
+
+### Public sample
 
 ```bash
 python3 adapt.py --format analyzer --input public-sample/Example1.json --mapping demo/mapping.json --manifest demo/manifest.json --out demo/normalized.json
@@ -83,19 +97,37 @@ python3 migrate.py --snapshot demo/normalized.json --mapping demo/mapping.json -
 python3 demo/verify.py
 ```
 
-AWS 导出目录接入：
+### AWS Labs export directory
+
+The adapter follows the export file contract of [awslabs/import-export-for-nsx](https://github.com/awslabs/import-export-for-nsx): `dfw.json`, `dfw_details.json`, `cgw-groups.json`, and `services.json`, with optional `tags.json`. File names are configurable through the manifest. Extract the export archive before running:
 
 ```bash
 python3 adapt.py --format aws-export --input /path/to/extracted-export --mapping /path/to/mapping.json --manifest /path/to/reviewed-manifest.json --out result/normalized.json
 python3 migrate.py --snapshot result/normalized.json --mapping /path/to/mapping.json --out result/tencent-plan
 ```
 
-manifest 模板见 examples/aws-manifest.json。它默认完整性确认值为 false，需要实际检查后填写；不要直接沿用 demo 假设。policy_order 必须列出全部策略，顺序遵循实际 NSX 配置；rule sequence 存在时按 sequence 排序，缺失时需要明确确认数组即有效顺序。group_members 以组 path 为键，提供完整成员 ips 和 complete 标记。
+Start with [examples/aws-manifest.json](examples/aws-manifest.json). Completeness confirmations default to `false`; fill them only after checking the export. Do not copy the demo assumptions into a production manifest.
 
-动态成员快照可以包含留在源端的 IP：在 mapping 中显式声明它们不变，或补充实际对端地址映射。没有安全组执行端点的规则会阻断，需要按迁移批次单独处理。
+- `policy_order` must list every policy exactly once in its effective NSX order, respecting category order.
+- Rules with sequence numbers are sorted by those numbers. Missing sequence numbers require explicit confirmation that array order is effective order.
+- `group_members` is keyed by group path, with resolved `ips` and a `complete` flag.
+- Unconsumed API cursors block adaptation. A manifest assertion does not independently prove export completeness.
 
-标签原表达式和 tags 导出被保留用于审阅；此版本不解释任意标签表达式，不自动分配云上标签，不持续同步组成员。没有访问 NSX 或腾讯云的实际 API。
+Membership snapshots may contain IPs of endpoints remaining on-premises. Explicitly retain those addresses or supply their actual peer-address mappings. Rules without a mapped Security Group enforcement endpoint block conversion and require wave-specific handling.
 
-## 许可与来源
+Original tag expressions and tag exports are retained for review. The adapter does not evaluate arbitrary tag expressions, assign cloud tags, or continuously synchronize group membership. AWS-format compatibility was tested using constructed fixtures, not an export collected from a live AWS/NSX environment.
 
-原创工具代码采用 Apache-2.0 许可。public-sample/Example1.json 来自 np-guard/vmware-analyzer，保留原 Apache-2.0 许可，固定版本和来源见 public-sample/SOURCE.md。AWS Labs 项目仅作为导出文件合同参考，未复制其代码。
+## Official references
+
+- [NSX Rule schema](https://developer.broadcom.com/xapis/nsx-t-data-center-rest-api/latest/schemas_Rule.html)
+- [Exporting NSX groups, members, and services](https://knowledge.broadcom.com/external/article/429635/exporting-all-nsxt-security-groups-via-a.html)
+- [Tencent Cloud Security Group data structures](https://cloud.tencent.cn/document/api/215/15824)
+- [Creating Tencent Cloud Security Groups and rules](https://cloud.tencent.com/document/api/215/43279)
+
+These references inform field design; they do not constitute vendor certification of this tool.
+
+## License and attribution
+
+Original tool code is licensed under [Apache-2.0](LICENSE). `public-sample/Example1.json` comes from `np-guard/vmware-analyzer`; its original Apache-2.0 license is retained. See [public-sample/SOURCE.md](public-sample/SOURCE.md) for the pinned revision and source.
+
+The AWS Labs project was used only as a reference for the export file contract. Its source code was not copied.

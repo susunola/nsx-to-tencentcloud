@@ -2,6 +2,7 @@
 """Offline, conservative NSX Policy snapshot to Tencent Cloud review compiler."""
 import argparse, csv, ipaddress, json, pathlib, sys
 from collections import Counter
+from service_resolver import ServiceResolver
 from output_io import write_json, invalidate
 
 from validation import validate_mapping, validate_snapshot, read_json, strings, object_value, integer
@@ -19,6 +20,7 @@ def compile_snapshot(data, mapping, limit=200):
     assets = mapping['assets']
     groups = {g['path']: g for g in data['groups']}
     services = {s['path']: s for s in data['services']}
+    resolver = ServiceResolver(services)
     issues, matrix, policies = [], [], {}
     if len({a['id'] for a in assets}) != len(assets):
         raise ValueError('Duplicate asset id')
@@ -82,16 +84,9 @@ def compile_snapshot(data, mapping, limit=200):
         return any(addr.version == net(v).version and addr in net(v) for v in values)
 
     def service_entries(rule):
-        entries = list(rule.get('service_entries', []))
-        refs = rule.get('services', [])
-        if refs == ['ANY'] and not entries:
+        entries = resolver.expand(rule)
+        if entries is None:
             return [('ALL', None)]
-        if 'ANY' in refs:
-            raise Blocked('Mixed ANY service')
-        for ref in refs:
-            if ref not in services:
-                raise Blocked('Unresolved service: ' + ref)
-            entries += services[ref]['service_entries']
         out = []
         for e in entries:
             object_value(e, 'service entry')
@@ -185,7 +180,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--snapshot', required=True); p.add_argument('--mapping', required=True)
     p.add_argument('--out', required=True); p.add_argument('--rule-budget', type=int, default=200)
-    p.add_argument('--bounded', action='store_true', help='Explicit mapped IPv4 TCP/UDP domain; outside traffic denied')
+    p.add_argument('--bounded', action='store_true', help='Explicit mapped IPv4/IPv6 TCP/UDP domain; outside traffic denied')
     a = p.parse_args()
     try:
         compiler = compile_snapshot

@@ -39,3 +39,11 @@ Ordinary mode retains its existing unsupported-rule blocks. In the explicitly se
 11,104 sampled mapped-pair connection comparisons show no differences in the IPv4 TCP/UDP port 1–65535 domain. Status is bounded_review_required. The default deny deliberately restricts traffic outside that domain. This does not prove full NSX equivalence. Generated bounded plans are under results/<fixture>/bounded-plan.json.
 
 Jump semantics reference: https://developer.broadcom.com/xapis/inventory/latest/data-structures/InlineNsxRule1/
+
+## v0.5 expansion
+
+Ten more unmodified public generated inputs cover segments, external ranges, multiple scopes and abstract groups. See SOURCE.md. Of 18 total inputs, ordinary compilation succeeds for 3 and bounded compilation for 8; others remain explicitly blocked. Public successful cases have 1,044 ordinary and 12,776 bounded sampled connection comparisons without differences.
+
+Public input IPs are not used as real discovered asset IPs: the runner supplies synthetic documentation-address mappings. Segment topology is not implemented or inferred. External-only examples cannot establish pairwise equivalence; single-asset domains are blocked.
+
+The separate stress_trial.py creates 40 deterministic configurations, half IPv6, with category jumps, negation, scopes, family filters and port boundaries. Its independent direct-membership evaluator compares 30,400 connections. See stress-report.json. These are authored fixtures, not additional public or production exports.

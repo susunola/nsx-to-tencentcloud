@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "bounded",
+      "severity": "error",
+      "reason": "Unsupported service/source ports"
+    }
+  ],
+  "security_group_requests": []
+}

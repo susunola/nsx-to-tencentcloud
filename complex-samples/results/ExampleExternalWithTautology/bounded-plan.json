@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "bounded",
+      "severity": "error",
+      "reason": "At least two mapped assets required; external-only coverage cannot be verified"
+    }
+  ],
+  "security_group_requests": []
+}

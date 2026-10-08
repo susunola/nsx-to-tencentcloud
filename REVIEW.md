@@ -36,3 +36,7 @@ Validation is shared in validation.py; atomic JSON output handling is shared in 
 ## v0.4 update
 
 A separate bounded compiler adds Environment jump control flow and negation evaluation within an explicitly limited endpoint domain. Ordinary compilation remains conservative. 52 tests pass; 11,104 finite-domain sampled connections agree with a separate first-match evaluator. Coverage and deliberate outside-domain denial are recorded in each bounded plan. This does not resolve full-schema, collector, live deployment or rollback requirements above.
+
+## v0.5 update
+
+Shared bounded nested-service expansion now supports service and entry references with cycle/depth/work limits. Finite-domain IPv6 and exact address-range parsing are implemented; multi-IP assets and external peers remain excluded. Public fixture coverage increased to 18 inputs, and 40 seeded differential fixtures provide 30,400 additional IPv4/IPv6 checks. 69 tests pass. Empty-domain success is rejected. No real cloud calls were made.

@@ -1,0 +1,8 @@
+{
+  "generated_configurations": 40,
+  "ipv4_configurations": 20,
+  "ipv6_configurations": 20,
+  "connection_checks": 30400,
+  "mismatches": 0,
+  "coverage": "Seeded five-asset single-IP fixtures; negation, jumps, scopes, direction, family filters, TCP/UDP port boundaries. Finite-domain offline testing only."
+}

@@ -1,5 +1,6 @@
 """Strict input validation shared by adapters and the policy compiler."""
 import ipaddress
+from addresses import networks
 import json
 import pathlib
 
@@ -94,14 +95,14 @@ def validate_mapping(mapping):
                 if expected != int(n.network_address):
                     raise ValueError('CIDR mapping conflicts with asset mapping: ' + source)
 
-def validate_snapshot(data):
+def validate_snapshot(data, allow_ranges=False):
     object_value(data, 'snapshot')
     unique_objects(data.get('groups'), 'path', 'groups')
     unique_objects(data.get('services'), 'path', 'services')
     for group in data['groups']:
         booleans(group, ['members_complete'], 'group')
         strings(group.get('members', []), 'members')
-        for member in group.get('members', []): ipaddress.ip_network(member, strict=True)
+        for member in group.get('members', []): networks(member, allow_ranges=allow_ranges)
     for service in data['services']:
         array(service.get('service_entries'), 'service_entries')
     array(data.get('rules'), 'rules')

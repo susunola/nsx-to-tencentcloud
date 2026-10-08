@@ -1,0 +1,96 @@
+{
+  "groups": [
+    {
+      "path": "/infra/domains/default/groups/app",
+      "expression": [
+        {
+          "resource_type": "Condition",
+          "key": "Tag",
+          "value": "role|app"
+        }
+      ],
+      "members_complete": true,
+      "members": [
+        "2001:db8::1"
+      ]
+    },
+    {
+      "path": "/infra/domains/default/groups/db",
+      "members_complete": true,
+      "members": [
+        "2001:db8::2"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "path": "/infra/services/mysql",
+      "service_entries": [
+        {
+          "resource_type": "L4PortSetServiceEntry",
+          "l4_protocol": "TCP",
+          "destination_ports": [
+            "3306"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/infra/services/web",
+      "service_entries": [
+        {
+          "resource_type": "L4PortSetServiceEntry",
+          "l4_protocol": "TCP",
+          "destination_ports": [
+            "443"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/infra/services/bundle",
+      "service_entries": [
+        {
+          "resource_type": "NestedServiceServiceEntry",
+          "nested_service_path": "/infra/services/mysql"
+        },
+        {
+          "resource_type": "NestedServiceServiceEntry",
+          "nested_service_path": "/infra/services/web"
+        }
+      ]
+    },
+    {
+      "path": "/infra/services/top",
+      "service_entries": [
+        {
+          "resource_type": "NestedServiceServiceEntry",
+          "nested_service_path": "/infra/services/bundle"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "app-to-db",
+      "effective_order": 1,
+      "stateful": true,
+      "source_groups": [
+        "/infra/domains/default/groups/app"
+      ],
+      "destination_groups": [
+        "/infra/domains/default/groups/db"
+      ],
+      "scope": [
+        "ANY"
+      ],
+      "services": [
+        "/infra/services/top"
+      ],
+      "direction": "IN_OUT",
+      "ip_protocol": "IPV6",
+      "action": "ALLOW",
+      "category": "Application"
+    }
+  ]
+}

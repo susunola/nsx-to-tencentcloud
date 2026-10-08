@@ -1,33 +1,41 @@
-"""Compile a deliberately bounded IPv4 TCP/UDP endpoint matrix, not a full migration."""
+"""Compile a deliberately bounded IPv4/IPv6 TCP/UDP endpoint matrix, not a full migration."""
 import ipaddress
+from addresses import networks
+from service_resolver import ServiceResolver
 from validation import validate_mapping, validate_snapshot, integer
 
 CATEGORIES = ['Emergency', 'Infrastructure', 'Environment', 'Application']
 
 def compile_bounded(data, mapping, limit=200):
-    validate_mapping(mapping); validate_snapshot(data); integer(limit, 'rule budget')
+    validate_mapping(mapping); validate_snapshot(data, allow_ranges=True); integer(limit, 'rule budget')
     assets = mapping['assets']
     issues = []
     def blocked(reason):
         return {'status':'blocked','issues':[{'rule':'bounded','severity':'error','reason':reason}], 'security_group_requests':[]}
+    if len(assets)<2:return blocked('At least two mapped assets required; external-only coverage cannot be verified')
     if len(assets)>64: return blocked('Bounded mode supports at most 64 assets')
-    if any(len(a['old_ips'])!=1 or len(a['new_ips'])!=1 or ipaddress.ip_address(a['old_ips'][0]).version!=4 for a in assets):
-        return blocked('Bounded mode requires one IPv4 address per asset')
+    if any(len(a['old_ips'])!=1 or len(a['new_ips'])!=1 for a in assets):
+        return blocked('Bounded mode requires one IP address per asset')
     groups = {g['path']:g for g in data['groups']}
     services = {s['path']:s for s in data['services']}
+    try:
+        resolver = ServiceResolver(services)
+    except ValueError as e:return blocked(str(e))
     rules = sorted(data['rules'],key=lambda r:r['effective_order'])
     if len({r['effective_order'] for r in rules})!=len(rules):return blocked('Duplicate effective order')
     if len(rules)>2000:return blocked('Bounded mode supports at most 2000 source rules')
+    if not any(ipaddress.ip_address(a['old_ips'][0]).version==ipaddress.ip_address(b['old_ips'][0]).version for i,a in enumerate(assets) for b in assets[i+1:]):
+        return blocked('No same-family mapped pairs; finite domain is empty')
     resolved=[];boundaries={'TCP':{1,65536},'UDP':{1,65536}}
     def addresses(refs):
         values=[]
         for ref in refs:
-            if ref=='ANY': values.append(ipaddress.ip_network('0.0.0.0/0'))
+            if ref=='ANY': values.extend([ipaddress.ip_network('0.0.0.0/0'),ipaddress.ip_network('::/0')])
             elif ref in groups:
                 g=groups[ref]
                 if g.get('members_complete') is not True:raise ValueError('Incomplete group '+ref)
-                values.extend(ipaddress.ip_network(v) for v in g.get('members',[]))
-            else:values.append(ipaddress.ip_network(ref))
+                for v in g.get('members',[]):values.extend(networks(v,allow_ranges=True))
+            else:values.extend(networks(ref,allow_ranges=True))
         return values
     try:
         previous=-1
@@ -39,19 +47,16 @@ def compile_bounded(data, mapping, limit=200):
             if pos<previous:raise ValueError('Category order is inconsistent')
             previous=pos
             if r.get('stateful') is not True:raise ValueError('Stateful rules required')
-            if r.get('ip_protocol') not in ('IPV4','IPV4_IPV6'):raise ValueError('IPv4 rules required')
+            if r.get('ip_protocol') not in ('IPV4','IPV6','IPV4_IPV6'):raise ValueError('Explicit address family required')
             if r.get('direction') not in ('IN','OUT','IN_OUT'):raise ValueError('Explicit direction required')
             if r.get('profiles', ['ANY']) not in ([],['ANY']):raise ValueError('L7 profiles unsupported')
             if r['action'] not in ('ALLOW','DROP','JUMP_TO_APPLICATION'):raise ValueError('Unsupported action')
             if r['action']=='JUMP_TO_APPLICATION' and category!='Environment':raise ValueError('Jump only valid in Environment')
             entry={'rule':r,'src':addresses(r['source_groups']),'dst':addresses(r['destination_groups']),'scope':addresses(r['scope']),'ranges':{'TCP':[],'UDP':[]}}
-            if r.get('services')==['ANY'] and not r.get('service_entries'):
+            es = resolver.expand(r)
+            if es is None:
                 entry['ranges']={'TCP':[(1,65535)],'UDP':[(1,65535)]}
             else:
-                es=list(r.get('service_entries',[]))
-                for ref in r.get('services',[]):
-                    if ref not in services:raise ValueError('Unresolved service '+ref)
-                    es+=services[ref]['service_entries']
                 if not es:raise ValueError('Empty service')
                 for e in es:
                     if e.get('resource_type')!='L4PortSetServiceEntry' or e.get('source_ports'):raise ValueError('Unsupported service/source ports')
@@ -77,6 +82,8 @@ def compile_bounded(data, mapping, limit=200):
         for e in resolved:
             r=e['rule']
             if jump and r['category']!='Application':continue
+            if r['ip_protocol']=='IPV4' and src.version!=4:continue
+            if r['ip_protocol']=='IPV6' and src.version!=6:continue
             if r['direction'] not in (direction,'IN_OUT'):continue
             if not contains(e['scope'],local):continue
             source=contains(e['src'],src);dest=contains(e['dst'],dst)
@@ -96,6 +103,7 @@ def compile_bounded(data, mapping, limit=200):
         for b in assets:
             if a['id']==b['id']:continue
             src=ipaddress.ip_address(a['old_ips'][0]);dst=ipaddress.ip_address(b['old_ips'][0])
+            if src.version!=dst.version:continue
             for proto in ['TCP','UDP']:
                 points=sorted(boundaries[proto]);allowed=[]
                 for lo,stop in zip(points,points[1:]):
@@ -110,12 +118,17 @@ def compile_bounded(data, mapping, limit=200):
                     port=str(segment['start']) if segment['start']==segment['end'] else f"{segment['start']}-{segment['end']}"
                     for asset,direction,peer in [(a,'Egress',b),(b,'Ingress',a)]:
                         es=policies[asset['security_group_id']][direction]
-                        es.append({'Protocol':proto,'Port':port,'CidrBlock':peer['new_ips'][0]+'/32','Action':'ACCEPT','PolicyDescription':'Bounded '+a['id']+' -> '+b['id']})
+                        field='CidrBlock' if src.version==4 else 'Ipv6CidrBlock'
+                        cidr=str(ipaddress.ip_network(peer['new_ips'][0]))
+                        es.append({'Protocol':proto,'Port':port,field:cidr,'Action':'ACCEPT','PolicyDescription':('Bounded '+a['id']+' -> '+b['id'])[:100]})
                         if len(es)+1>limit:return blocked('Bounded target rule budget exceeded')
                     connections.append({'source':a['id'],'destination':b['id'],'protocol':proto,'port':port,'source_rule_trace':segment['trace']})
-    for directions in policies.values():
+    for asset in assets:
+        directions=policies[asset['security_group_id']]
+        version=ipaddress.ip_address(asset['new_ips'][0]).version
+        field='CidrBlock' if version==4 else 'Ipv6CidrBlock'
         for entries in directions.values():
-            entries.append({'Protocol':'ALL','CidrBlock':'0.0.0.0/0','Action':'DROP','PolicyDescription':'Bounded domain default deny'})
+            entries.append({'Protocol':'ALL',field:'0.0.0.0/0' if version==4 else '::/0','Action':'DROP','PolicyDescription':'Bounded domain default deny'})
             if len(entries)>limit:return blocked('Bounded target rule budget exceeded')
             for i,p in enumerate(entries):p['PolicyIndex']=i
-    return {'status':'bounded_review_required','issues':issues,'coverage':{'domain':'distinct mapped single-IPv4 VM pairs; TCP/UDP destination ports 1..65535','default_assumption':'unmatched source traffic denied at each endpoint','outside_domain':'denied in target; this is intentional isolation, NOT full NSX equivalence','port_partitions_evaluated':checks},'connections':connections,'security_group_requests':[{'SecurityGroupId':sg,'SecurityGroupPolicySet':d} for sg,d in policies.items()]}
+    return {'status':'bounded_review_required','issues':issues,'coverage':{'domain':'distinct mapped single-IP VM pairs of the same address family; TCP/UDP destination ports 1..65535','default_assumption':'unmatched source traffic denied at each endpoint','outside_domain':'denied in target; this is intentional isolation, NOT full NSX equivalence','port_partitions_evaluated':checks},'connections':connections,'security_group_requests':[{'SecurityGroupId':sg,'SecurityGroupPolicySet':d} for sg,d in policies.items()]}

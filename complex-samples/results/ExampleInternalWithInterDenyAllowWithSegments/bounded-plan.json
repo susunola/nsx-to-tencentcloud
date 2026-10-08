@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "bounded",
+      "severity": "error",
+      "reason": "172.16.10.10/16 has host bits set"
+    }
+  ],
+  "security_group_requests": []
+}

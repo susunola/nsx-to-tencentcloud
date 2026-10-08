@@ -1,4 +1,4 @@
-# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.4
+# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.5
 
 English | [简体中文](README.zh-CN.md)
 
@@ -163,3 +163,14 @@ The mode evaluates both endpoints, resolves Environment `JUMP_TO_APPLICATION` co
 Limits: at most 64 assets, 2000 rules, 1024 port boundary points and a conservative 5-million-rule-check work estimate, plus the existing target rule budget. Complex services, source-port restrictions and incomplete membership remain blocked.
 
 Six of eight public complex fixtures compile in bounded mode; 11,104 sampled connection comparisons show no differences. All 52 tests pass. This is finite-domain offline evidence, not live cloud validation or a universal proof. Plans are in [complex-samples/results](complex-samples/results); details are in [report.json](complex-samples/report.json).
+
+## v0.5: nested services, IPv6 and wider trials
+
+- Both compilers resolve NestedServiceServiceEntry references to services or explicit service-entry paths. Cycles, missing references, deleted entries, depth over 16, more than 10,000 expanded leaf entries and excessive expansion work are rejected. Leaf service semantics must still be supported.
+- Bounded mode supports same-family IPv4 **or IPv6** pairs with one IP per asset, respecting each rule's ip_protocol. IPv6 peers use /128 and Ipv6CidrBlock. This is not dual-stack multi-NIC support.
+- Bounded mode accepts exact IP-range strings, converted into CIDRs without expanding every address. CIDRs with host bits remain invalid. Ordinary mode still requires direct IP/CIDR inputs.
+- Single-asset and empty same-family domains are blocked, rather than reported as successful validations of external connectivity.
+
+There are now 18 public generated fixtures: 3 compile in ordinary mode and 8 in bounded mode. Successful public trials compare 1,044 ordinary-mode and 12,776 bounded-mode sampled new connections with no differences. 40 additional seeded synthetic configurations (20 IPv4, 20 IPv6) compare 30,400 connections. All 69 tests pass. These are offline finite-domain checks, not production equivalence guarantees.
+
+Run `python3 stress_trial.py` to repeat the seeded trial. See [stress-report.json](complex-samples/stress-report.json), [public fixture diagnostics](complex-samples/report.json), and the [authored IPv6 nested-service example](advanced-samples/README.md). External peers, self-connections, protocols other than TCP/UDP, port zero and multiple IPs per asset remain outside bounded coverage.

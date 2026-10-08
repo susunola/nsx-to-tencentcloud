@@ -1,4 +1,4 @@
-# NSX → 腾讯云微隔离迁移工具 v0.4
+# NSX → 腾讯云微隔离迁移工具 v0.5
 
 [English](README.md) | 简体中文
 
@@ -133,3 +133,14 @@ python3 complex-samples/run.py
 最多支持 64 个资产、2000 条源规则、1024 个端口边界，以及保守估算的 500 万次规则检查，并受目标规则预算限制。复杂服务、源端口限制和不完整组成员仍阻断。
 
 8 份复杂公开样例中 6 份在限定模式完成转换，11104 个抽样连接比较未发现差异，52 项测试通过。结果见 [complex-samples/results](complex-samples/results) 和 [report.json](complex-samples/report.json)。仅为限定域离线证据，不是生产验证或通用证明。
+
+## v0.5：嵌套服务、IPv6 和扩大试跑
+
+- 两种编译模式都能解析 NestedServiceServiceEntry，支持服务路径和明确服务条目路径。循环、缺失引用、已删除条目、超过 16 层、10000 个叶条目或展开工作上限会阻断；叶条目仍必须是受支持服务类型。
+- 限定模式支持单 IP 资产之间的同地址族 IPv4 或 IPv6 连接，遵守 ip_protocol，IPv6 生成 /128 及 Ipv6CidrBlock。这不是双栈多网卡支持。
+- 限定模式支持 IP 范围字符串，精确拆成 CIDR；带主机位的 CIDR 仍拒绝。普通模式仍要求单 IP/CIDR。
+- 单实例和没有同地址族对端的空覆盖域会阻断，不再作为外部访问验证成功。
+
+公开生成样例增至 18 份：普通模式 3 份、限定模式 8 份可生成待审阅方案；分别完成 1044 和 12776 个抽样连接对比，未发现差异。另有 40 组带随机种子的自建配置（IPv4/IPv6 各 20 组），完成 30400 个连接对比。69 项测试通过。均为离线有限域检查，不能保证生产等价。
+
+运行 `python3 stress_trial.py` 可复现压力试跑。见 [结果](complex-samples/stress-report.json)、[公开样例诊断](complex-samples/report.json) 和 [自建 IPv6 嵌套服务样例](advanced-samples/README.md)。外部对端、自访问、非 TCP/UDP、端口 0、多 IP 资产仍不在限定范围内。

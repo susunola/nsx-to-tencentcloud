@@ -4,6 +4,7 @@ sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]))
 from adapt import from_analyzer
 from migrate import compile_snapshot
 from bounded import compile_bounded
+from output_io import write_json
 ROOT=pathlib.Path(__file__).parent
 
 def hit(addresses, value):
@@ -75,10 +76,10 @@ def evaluate(snapshot, plan, mapping, minimum_port=0):
 
 def run(write_report=True):
     reports=[]
-    for path in sorted(ROOT.glob('*.json')):
+    for path in sorted(ROOT.glob('Example*.json')):
         if path.name=='report.json':continue
         data=json.loads(path.read_text()); resource=data['domains'][0]['resources']
-        mapping={'assets':[{'id':vm['external_id'],'old_ips':[f'192.0.2.{i+1}'],'new_ips':[f'198.51.100.{i+1}'],'security_group_id':f'sg-trial-{i+1}'} for i,vm in enumerate(data['virtual_machines'])]}
+        mapping={'assets':[{'id':vm['external_id'],'old_ips':[f'192.0.2.{i+1}'],'new_ips':[f'198.51.100.{i+1}'],'security_group_id':f'sg-trial-{i+1}'} for i,vm in enumerate(data.get('virtual_machines') or [])]}
         manifest={'export_complete':True,'exclude_list_reviewed':True,'captured_at':'public generated fixture; synthetic trial','policy_order':[p.get('id',p.get('display_name')) for p in resource['security_policies']],'rule_arrays_in_effective_order':True,'allow_vm_members_from_mapping':True,'rule_defaults':{'stateful':True,'direction':'IN_OUT','ip_protocol':'IPV4'}}
         report={'fixture':path.name,'vms':len(mapping['assets']),'groups':len(resource['groups']),'rules':sum(len(p.get('rules') or []) for p in resource['security_policies'])}
         try:
@@ -87,6 +88,10 @@ def run(write_report=True):
             bounded=compile_bounded(snapshot,mapping)
             report['bounded_status']=bounded['status']
             report['bounded_issues']=bounded['issues']
+            if write_report:
+                dest=ROOT/'results'/path.stem
+                dest.mkdir(parents=True,exist_ok=True)
+                write_json(dest/'bounded-plan.json',bounded)
             if bounded['status']=='bounded_review_required':
                 report['bounded_partitions']=bounded['coverage']['port_partitions_evaluated']
                 report['bounded_connections']=len(bounded['connections'])
@@ -102,6 +107,10 @@ def run(write_report=True):
             else:assert not plan['security_group_requests']
         except (ValueError,KeyError,TypeError) as e:
             report.update(status='adaptation_blocked',issues=[str(e)])
+            if write_report:
+                dest=ROOT/'results'/path.stem
+                dest.mkdir(parents=True,exist_ok=True)
+                write_json(dest/'bounded-plan.json',{'status':'blocked','security_group_requests':[],'issues':[str(e)]})
         reports.append(report)
     if write_report: (ROOT/'report.json').write_text(json.dumps({'limitations':'Synthetic single-IP mappings and explicit defaults. Mapped VM pairs only; TCP/UDP new connections with sampled port boundaries. Not general equivalence, tag-expression evaluation, or live cloud validation.','fixtures':reports},indent=2)+'\n')
     for r in reports:print(r['fixture'],r['status'],'cases',r.get('connection_cases',0),'mismatches',len(r.get('mismatches',[])))

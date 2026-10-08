@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "bounded",
+      "severity": "error",
+      "reason": "Incomplete group Slytherin"
+    }
+  ],
+  "security_group_requests": []
+}

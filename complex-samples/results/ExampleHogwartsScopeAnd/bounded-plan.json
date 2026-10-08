@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "issues": [
+    {
+      "rule": "bounded",
+      "severity": "error",
+      "reason": "Empty service expansion"
+    }
+  ],
+  "security_group_requests": []
+}

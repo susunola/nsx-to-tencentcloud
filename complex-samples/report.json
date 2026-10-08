@@ -19,6 +19,38 @@
       "generated_rules": 10
     },
     {
+      "fixture": "Example1dExternalWithSegments.json",
+      "vms": 3,
+      "groups": 1,
+      "rules": 4,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "app-x/rules/1004",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 0.0.1.0/25"
+        },
+        {
+          "rule": "app-x/rules/1005",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 0.0.1.128/25"
+        },
+        {
+          "rule": "app-x/rules/1006",
+          "severity": "error",
+          "reason": "Unsupported service type or source-port restriction"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "Unsupported service/source ports"
+        }
+      ]
+    },
+    {
       "fixture": "Example2.json",
       "vms": 11,
       "groups": 13,
@@ -89,6 +121,23 @@
           "reason": "Unsupported service/source ports"
         }
       ]
+    },
+    {
+      "fixture": "ExampleAppWithGroupsAndSegments.json",
+      "vms": 5,
+      "groups": 7,
+      "rules": 6,
+      "status": "review_required",
+      "issues": [],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 160,
+      "bounded_connections": 8,
+      "bounded_connection_cases": 520,
+      "bounded_mismatches": [],
+      "connection_cases": 560,
+      "mismatches": [],
+      "generated_rules": 90
     },
     {
       "fixture": "ExampleExprAndCondsExclude.json",
@@ -168,6 +217,105 @@
       ]
     },
     {
+      "fixture": "ExampleExprTwoScopes.json",
+      "vms": 9,
+      "groups": 6,
+      "rules": 8,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Gryffindor-to-Gryffindor-allow/rules/10218",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Hufflepuff-to-Hufflepuff-allow/rules/10219",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Slytherin-to-Slytherin-allow/rules/10220",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        }
+      ],
+      "bounded_status": "bounded_review_required",
+      "bounded_issues": [],
+      "bounded_partitions": 144,
+      "bounded_connections": 24,
+      "bounded_connection_cases": 1152,
+      "bounded_mismatches": []
+    },
+    {
+      "fixture": "ExampleExprTwoScopesAbstract.json",
+      "vms": 0,
+      "groups": 6,
+      "rules": 8,
+      "status": "adaptation_blocked",
+      "issues": [
+        "assets must not be empty"
+      ]
+    },
+    {
+      "fixture": "ExampleExternalWithDenySimple.json",
+      "vms": 1,
+      "groups": 1,
+      "rules": 5,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "app-x/rules/1004",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 1.2.0.0/30"
+        },
+        {
+          "rule": "app-x/rules/1005",
+          "severity": "error",
+          "reason": "'1.2.0.0-1.2.1.255' does not appear to be an IPv4 or IPv6 network"
+        },
+        {
+          "rule": "app-x/rules/1006",
+          "severity": "error",
+          "reason": "'1.2.3.0-1.2.4.255' does not appear to be an IPv4 or IPv6 network"
+        },
+        {
+          "rule": "app-x/rules/1007",
+          "severity": "error",
+          "reason": "'1.2.1.0-1.2.3.255' does not appear to be an IPv4 or IPv6 network"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "At least two mapped assets required; external-only coverage cannot be verified"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleExternalWithTautology.json",
+      "vms": 1,
+      "groups": 1,
+      "rules": 3,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "app-x/rules/1004",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 1.0.0.0/24"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "At least two mapped assets required; external-only coverage cannot be verified"
+        }
+      ]
+    },
+    {
       "fixture": "ExampleGroup4.json",
       "vms": 5,
       "groups": 3,
@@ -218,6 +366,204 @@
       "bounded_connections": 16,
       "bounded_connection_cases": 3520,
       "bounded_mismatches": []
+    },
+    {
+      "fixture": "ExampleHogwartsExternal.json",
+      "vms": 11,
+      "groups": 7,
+      "rules": 10,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "Gryffindor-to-External-allow/rules/10218",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Hufflepuff-to-External-allow/rules/10219",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Slytherin-to-External-allow/rules/10220",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Dumbledore-connection/rules/10221",
+          "severity": "error",
+          "reason": "Only ALLOW/DROP supported"
+        },
+        {
+          "rule": "Web-to-external/rules/10400",
+          "severity": "error",
+          "reason": "0.0.1.0/16 has host bits set"
+        },
+        {
+          "rule": "Web-to-external/rules/10401",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 146.2.0.0/16"
+        },
+        {
+          "rule": "Web-to-external/rules/10405",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 220.0.1.0/28"
+        },
+        {
+          "rule": "Web-to-external/rules/10406",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 122.0.0.0/8"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "0.0.1.0/16 has host bits set"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleHogwartsScopeAnd.json",
+      "vms": 4,
+      "groups": 4,
+      "rules": 5,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "GryffindorWeb-to-GryffindorApp/rules/10218",
+          "severity": "error",
+          "reason": "Empty service expansion"
+        },
+        {
+          "rule": "GryffindorWeb-to-GryffindorApp/rules/10219",
+          "severity": "error",
+          "reason": "Empty service expansion"
+        },
+        {
+          "rule": "SlytherinApp-to-SlytherinWeb/rules/11218",
+          "severity": "error",
+          "reason": "Empty service expansion"
+        },
+        {
+          "rule": "SlytherinApp-to-SlytherinWeb/rules/11219",
+          "severity": "error",
+          "reason": "Empty service expansion"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "Empty service expansion"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleInternalWithInterDenyAllowMixedSegments.json",
+      "vms": 12,
+      "groups": 2,
+      "rules": 9,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "app-x/rules/1004",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/30"
+        },
+        {
+          "rule": "app-x/rules/1005",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/24"
+        },
+        {
+          "rule": "app-x/rules/1006",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/20"
+        },
+        {
+          "rule": "app-x/rules/1007",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/16"
+        },
+        {
+          "rule": "app-x/rules/2000",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        },
+        {
+          "rule": "app-x/rules/2200",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        },
+        {
+          "rule": "app-x/rules/3000",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 192.168.0.0/16"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        }
+      ]
+    },
+    {
+      "fixture": "ExampleInternalWithInterDenyAllowWithSegments.json",
+      "vms": 12,
+      "groups": 2,
+      "rules": 9,
+      "status": "blocked",
+      "issues": [
+        {
+          "rule": "app-x/rules/1004",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/30"
+        },
+        {
+          "rule": "app-x/rules/1005",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/24"
+        },
+        {
+          "rule": "app-x/rules/1006",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/20"
+        },
+        {
+          "rule": "app-x/rules/1007",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 10.0.0.0/16"
+        },
+        {
+          "rule": "app-x/rules/2000",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        },
+        {
+          "rule": "app-x/rules/2200",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        },
+        {
+          "rule": "app-x/rules/3000",
+          "severity": "error",
+          "reason": "Missing explicit address/CIDR mapping: 192.168.0.0/16"
+        }
+      ],
+      "bounded_status": "blocked",
+      "bounded_issues": [
+        {
+          "rule": "bounded",
+          "severity": "error",
+          "reason": "172.16.10.10/16 has host bits set"
+        }
+      ]
     }
   ]
 }

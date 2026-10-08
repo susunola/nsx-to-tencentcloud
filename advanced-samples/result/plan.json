@@ -1,0 +1,120 @@
+{
+  "status": "bounded_review_required",
+  "issues": [],
+  "coverage": {
+    "domain": "distinct mapped single-IP VM pairs of the same address family; TCP/UDP destination ports 1..65535",
+    "default_assumption": "unmatched source traffic denied at each endpoint",
+    "outside_domain": "denied in target; this is intentional isolation, NOT full NSX equivalence",
+    "port_partitions_evaluated": 12
+  },
+  "connections": [
+    {
+      "source": "vm-uuid-app",
+      "destination": "vm-uuid-db",
+      "protocol": "TCP",
+      "port": "443",
+      "source_rule_trace": [
+        [
+          "app-to-db"
+        ],
+        [
+          "app-to-db"
+        ]
+      ]
+    },
+    {
+      "source": "vm-uuid-app",
+      "destination": "vm-uuid-db",
+      "protocol": "TCP",
+      "port": "3306",
+      "source_rule_trace": [
+        [
+          "app-to-db"
+        ],
+        [
+          "app-to-db"
+        ]
+      ]
+    }
+  ],
+  "security_group_requests": [
+    {
+      "SecurityGroupId": "sg-example-app",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "ALL",
+            "Ipv6CidrBlock": "::/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "Ipv6CidrBlock": "2001:db8:1::2/128",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded vm-uuid-app -> vm-uuid-db",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "3306",
+            "Ipv6CidrBlock": "2001:db8:1::2/128",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded vm-uuid-app -> vm-uuid-db",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "Ipv6CidrBlock": "::/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "SecurityGroupId": "sg-example-db",
+      "SecurityGroupPolicySet": {
+        "Ingress": [
+          {
+            "Protocol": "TCP",
+            "Port": "443",
+            "Ipv6CidrBlock": "2001:db8:1::1/128",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded vm-uuid-app -> vm-uuid-db",
+            "PolicyIndex": 0
+          },
+          {
+            "Protocol": "TCP",
+            "Port": "3306",
+            "Ipv6CidrBlock": "2001:db8:1::1/128",
+            "Action": "ACCEPT",
+            "PolicyDescription": "Bounded vm-uuid-app -> vm-uuid-db",
+            "PolicyIndex": 1
+          },
+          {
+            "Protocol": "ALL",
+            "Ipv6CidrBlock": "::/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 2
+          }
+        ],
+        "Egress": [
+          {
+            "Protocol": "ALL",
+            "Ipv6CidrBlock": "::/0",
+            "Action": "DROP",
+            "PolicyDescription": "Bounded domain default deny",
+            "PolicyIndex": 0
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "assets": [
+    {
+      "id": "vm-uuid-app",
+      "old_ips": [
+        "2001:db8::1"
+      ],
+      "new_ips": [
+        "2001:db8:1::1"
+      ],
+      "security_group_id": "sg-example-app"
+    },
+    {
+      "id": "vm-uuid-db",
+      "old_ips": [
+        "2001:db8::2"
+      ],
+      "new_ips": [
+        "2001:db8:1::2"
+      ],
+      "security_group_id": "sg-example-db"
+    }
+  ],
+  "address_map": {},
+  "retain_addresses": []
+}

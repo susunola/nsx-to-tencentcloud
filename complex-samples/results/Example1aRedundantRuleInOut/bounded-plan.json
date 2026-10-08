@@ -2,7 +2,7 @@
   "status": "bounded_review_required",
   "issues": [],
   "coverage": {
-    "domain": "distinct mapped single-IPv4 VM pairs; TCP/UDP destination ports 1..65535",
+    "domain": "distinct mapped single-IP VM pairs of the same address family; TCP/UDP destination ports 1..65535",
     "default_assumption": "unmatched source traffic denied at each endpoint",
     "outside_domain": "denied in target; this is intentional isolation, NOT full NSX equivalence",
     "port_partitions_evaluated": 8

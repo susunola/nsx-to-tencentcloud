@@ -191,7 +191,7 @@ def main():
         out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
         write_json(out / 'plan.json', result)
         with (out / 'issues.csv').open('w', newline='') as f:
-            w = csv.DictWriter(f, fieldnames=['rule', 'severity', 'reason']); w.writeheader(); w.writerows(result['issues'])
+            w = csv.DictWriter(f, fieldnames=['rule', 'severity', 'reason'], lineterminator='\n'); w.writeheader(); w.writerows(result['issues'])
         print(result['status'] + ': ' + str(out / 'plan.json'))
         return 2 if result['status'] == 'blocked' else 0
     except (ValueError, KeyError, TypeError, OSError) as e:

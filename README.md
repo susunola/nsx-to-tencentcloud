@@ -1,4 +1,4 @@
-# NSX → Tencent Cloud Micro-segmentation Migration Tool v0.6
+# NSX → Tencent Cloud Migration Tool v0.6
 
 English | [简体中文](README.zh-CN.md)
 
